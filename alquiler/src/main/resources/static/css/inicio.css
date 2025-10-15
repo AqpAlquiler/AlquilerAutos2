@@ -1,0 +1,124 @@
+/* === RESET GENERAL === */
+body {
+  font-family: "Poppins", sans-serif;
+  background-color: #f8f9fa;
+  color: #333;
+  margin: 0;
+  padding: 0;
+}
+
+/* === NAVBAR === */
+.navbar {
+  background-color: #212529 !important;
+  padding: 0.8rem 1.5rem;
+}
+
+.navbar-brand {
+  font-weight: bold;
+  font-size: 1.3rem;
+  color: #f8f9fa !important;
+}
+
+.navbar-nav .nav-link {
+  color: #f8f9fa !important;
+  font-weight: 500;
+  transition: color 0.3s;
+}
+
+.navbar-nav .nav-link:hover {
+  color: #0d6efd !important;
+}
+
+/* === HERO === */
+.hero {
+  background: url('../img/hero-bg.jpg') center/cover no-repeat;
+  color: white;
+  text-align: center;
+  padding: 140px 20px;
+  position: relative;
+}
+
+.hero::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  background: rgba(0, 0, 0, 0.55);
+}
+
+.hero-content {
+  position: relative;
+  z-index: 1;
+}
+
+.hero h1 {
+  font-size: 3rem;
+  font-weight: 700;
+  margin-bottom: 20px;
+}
+
+.hero p {
+  font-size: 1.2rem;
+  margin-bottom: 30px;
+}
+
+.hero .btn {
+  padding: 12px 30px;
+  font-size: 1.1rem;
+}
+
+/* === SECCIÓN DE SERVICIOS === */
+.section-title {
+  text-align: center;
+  margin: 60px 0 40px;
+  font-weight: 600;
+}
+
+.card {
+  border: none;
+  box-shadow: 0 4px 10px rgba(0,0,0,0.1);
+  border-radius: 12px;
+  transition: transform 0.3s, box-shadow 0.3s;
+}
+
+.card:hover {
+  transform: translateY(-5px);
+  box-shadow: 0 6px 15px rgba(0,0,0,0.15);
+}
+
+.card-title {
+  font-weight: 600;
+  color: #212529;
+}
+
+.card-text {
+  color: #555;
+}
+
+/* === FOOTER === */
+footer {
+  background-color: #212529;
+  color: #f8f9fa;
+  text-align: center;
+  padding: 25px 0;
+  margin-top: 60px;
+}
+
+footer a {
+  color: #0d6efd;
+  text-decoration: none;
+}
+
+footer a:hover {
+  text-decoration: underline;
+}
+
+/* === RESPONSIVE === */
+@media (max-width: 768px) {
+  .hero h1 {
+    font-size: 2.3rem;
+  }
+
+  .hero p {
+    font-size: 1rem;
+  }
+}
