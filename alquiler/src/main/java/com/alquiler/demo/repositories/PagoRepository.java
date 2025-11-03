@@ -12,16 +12,16 @@ import java.util.List;
 public interface PagoRepository extends JpaRepository<Pago, Integer> {
 
     // 🔹 Buscar pagos realizados entre dos fechas
-    List<Pago> findByFecha_pagoBetween(LocalDate inicio, LocalDate fin);
+    List<Pago> findByFechaPagoBetween(LocalDate inicio, LocalDate fin);
 
     // 🔹 Buscar pagos por método de pago (ej: "Efectivo", "Tarjeta", "Transferencia")
-    List<Pago> findByMetodo_pago(String metodoPago);
+    List<Pago> findByMetodoPago(String metodoPago);
 
     // 🔹 Buscar pagos por tipo de comprobante (ej: "Boleta", "Factura")
-    List<Pago> findByTipo_comprobante(String tipoComprobante);
+    List<Pago> findByTipoComprobante(String tipoComprobante);
 
     // 🔹 Buscar pagos de un alquiler específico
-    List<Pago> findByAlquiler_Id_alquiler(Integer idAlquiler);
+    List<Pago> findByAlquiler_IdAlquiler(Integer idAlquiler);
 
     // 🔹 Buscar pagos mayores a un monto específico
     List<Pago> findByMontoGreaterThan(BigDecimal montoMinimo);

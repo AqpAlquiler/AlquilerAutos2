@@ -20,7 +20,7 @@ public interface EmpleadoRepository extends JpaRepository<Empleado, Integer> {
     List<Empleado> findByCargo(String cargo);
 
     // 🔹 Buscar empleados de una sucursal específica
-    List<Empleado> findBySucursal_Id_sucursal(Integer id_sucursal);
+    List<Empleado> findBySucursal_IdSucursal(Integer idSucursal);
 
     // 🔹 Buscar por teléfono exacto
     Optional<Empleado> findByTelefono(String telefono);

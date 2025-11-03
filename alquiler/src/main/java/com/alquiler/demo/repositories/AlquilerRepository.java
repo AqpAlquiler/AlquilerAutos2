@@ -11,15 +11,15 @@ import com.alquiler.demo.entities.Alquiler;
 @Repository
 public interface AlquilerRepository extends JpaRepository<Alquiler, Integer> {
 
-    // 🔹 Buscar alquileres por rango de fechas reales de inicio
-    List<Alquiler> findByFecha_inicio_realBetween(LocalDate inicio, LocalDate fin);
+    // Buscar alquileres por rango de fechas reales de inicio
+    List<Alquiler> findByFechaInicioRealBetween(LocalDate inicio, LocalDate fin);
 
-    // 🔹 Buscar alquileres que terminen antes de cierta fecha
-    List<Alquiler> findByFecha_fin_realBefore(LocalDate fecha);
+    // Buscar alquileres que terminen antes de cierta fecha
+    List<Alquiler> findByFechaFinRealBefore(LocalDate fecha);
 
-    // 🔹 Buscar alquileres que aún no tienen fecha de fin (por ejemplo, en curso)
-    List<Alquiler> findByFecha_fin_realIsNull();
+    // Buscar alquileres que aún no tienen fecha de fin (por ejemplo, en curso)
+    List<Alquiler> findByFechaFinRealIsNull();
 
-    // 🔹 Buscar por contrato (usando el id del contrato)
-    List<Alquiler> findByContrato_Id_contrato(Integer id_contrato);
+    // Buscar por contrato (usando el id del contrato)
+    List<Alquiler> findByContrato_IdContrato(Integer idContrato);
 }

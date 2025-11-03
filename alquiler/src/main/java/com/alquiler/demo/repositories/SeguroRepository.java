@@ -15,20 +15,20 @@ public interface SeguroRepository extends JpaRepository<Seguro, Integer> {
     List<Seguro> findByCompaniaContainingIgnoreCase(String compania);
 
     // 🔹 Buscar seguros por tipo de cobertura (ej: "Todo riesgo", "Contra terceros")
-    List<Seguro> findByTipo_cobertura(String tipoCobertura);
+    List<Seguro> findByTipoCobertura(String tipoCobertura);
 
     // 🔹 Buscar seguros que vencen antes de una fecha específica
-    List<Seguro> findByFecha_finBefore(LocalDate fechaLimite);
+    List<Seguro> findByFechaFinBefore(LocalDate fechaLimite);
 
     // 🔹 Buscar seguros que están vigentes en una fecha determinada
-    List<Seguro> findByFecha_inicioBeforeAndFecha_finAfter(LocalDate inicio, LocalDate fin);
+    List<Seguro> findByFechaInicioBeforeAndFechaFinAfter(LocalDate inicio, LocalDate fin);
 
     // 🔹 Buscar seguros de un vehículo específico
-    List<Seguro> findByVehiculo_Id_vehiculo(Integer idVehiculo);
+    List<Seguro> findByVehiculo_IdVehiculo(Integer idVehiculo);
 
     // 🔹 Buscar seguros con costo mayor a un monto determinado
     List<Seguro> findByCostoGreaterThan(BigDecimal montoMinimo);
 
     // 🔹 Buscar seguros dentro de un rango de costo
-    List<Seguro> findByCostoBetween(BigDecimal costoMin, BigDecimal costoMax);
+    List<Seguro> findByCostoBetween(BigDecimal montoMin, BigDecimal montoMax);
 }

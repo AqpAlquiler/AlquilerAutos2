@@ -14,17 +14,18 @@ public interface ReservaRepository extends JpaRepository<Reserva, Integer> {
     List<Reserva> findByEstado(String estado);
 
     // 🔹 Buscar reservas realizadas en una fecha específica
-    List<Reserva> findByFecha_reserva(LocalDate fechaReserva);
+    List<Reserva> findByFechaReserva(LocalDate fechaReserva);
 
     // 🔹 Buscar reservas dentro de un rango de fechas (por ejemplo, para reportes)
-    List<Reserva> findByFecha_inicioBetween(LocalDate inicio, LocalDate fin);
+    List<Reserva> findByFechaInicioBetween(LocalDate inicio, LocalDate fin);
 
     // 🔹 Buscar reservas por cliente
-    List<Reserva> findByCliente_Id_cliente(Integer idCliente);
+    List<Reserva> findByCliente_IdCliente(Integer idCliente);
 
     // 🔹 Buscar reservas por vehículo
-    List<Reserva> findByVehiculo_Id_vehiculo(Integer idVehiculo);
+    List<Reserva> findByVehiculo_IdVehiculo(Integer idVehiculo);
 
     // 🔹 Buscar reservas activas en una fecha (reservas que cubren una fecha dada)
-    List<Reserva> findByFecha_inicioBeforeAndFecha_finAfter(LocalDate fechaInicio, LocalDate fechaFin);
+    List<Reserva> findByFechaInicioBeforeAndFechaFinAfter(LocalDate fechaInicio, LocalDate fechaFin);
 }
+

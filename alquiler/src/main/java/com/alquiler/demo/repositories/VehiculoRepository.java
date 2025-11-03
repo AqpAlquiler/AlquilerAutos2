@@ -19,20 +19,21 @@ public interface VehiculoRepository extends JpaRepository<Vehiculo, Integer> {
     List<Vehiculo> findByModeloContainingIgnoreCase(String modelo);
 
     // 🔹 Buscar por tipo de vehículo (ej: "SUV", "Sedán", "Camioneta")
-    List<Vehiculo> findByTipo_vehiculoIgnoreCase(String tipoVehiculo);
+    List<Vehiculo> findByTipoVehiculoIgnoreCase(String tipoVehiculo);
 
     // 🔹 Buscar por estado (ej: "Disponible", "Mantenimiento", "Alquilado")
     List<Vehiculo> findByEstadoIgnoreCase(String estado);
 
     // 🔹 Buscar vehículos de una sucursal específica
-    List<Vehiculo> findBySucursal_Id_sucursal(Integer idSucursal);
+    List<Vehiculo> findBySucursal_IdSucursal(Integer idSucursal);
 
     // 🔹 Buscar vehículos por rango de año
     List<Vehiculo> findByAnioBetween(Integer anioInicio, Integer anioFin);
 
     // 🔹 Buscar vehículos con kilometraje menor o igual a un valor
-    List<Vehiculo> findByKilometraje_actualLessThanEqual(Integer kilometraje);
+    List<Vehiculo> findByKilometrajeActualLessThanEqual(Integer kilometraje);
 
     // 🔹 Buscar vehículos con número específico de asientos
     List<Vehiculo> findByAsientos(Integer asientos);
 }
+

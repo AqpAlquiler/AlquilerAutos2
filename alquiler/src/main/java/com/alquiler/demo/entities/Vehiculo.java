@@ -1,15 +1,21 @@
 package com.alquiler.demo.entities;
+
 import jakarta.persistence.*;
-import java.math.BigDecimal;
 import java.util.List;
+import lombok.Getter;
+import lombok.Setter;
 
-
+@Getter
+@Setter
 @Entity
 @Table(name = "Vehiculo")
 public class Vehiculo {
+
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private Integer id_vehiculo;
+    @Column(name = "id_vehiculo")
+    private Integer idVehiculo;
+
     private String placa;
     private String marca;
     private String modelo;
@@ -17,16 +23,23 @@ public class Vehiculo {
     private String color;
     private String estado;
     private Integer asientos;
-    private String tipo_vehiculo;
-    private Integer kilometraje_actual;
+
+    @Column(name = "tipo_vehiculo")
+    private String tipoVehiculo;
+
+    @Column(name = "kilometraje_actual")
+    private Integer kilometrajeActual;
+
     @ManyToOne
     @JoinColumn(name = "id_sucursal")
     private Sucursal sucursal;
+
     @OneToMany(mappedBy = "vehiculo")
     private List<Reserva> reservas;
+
     @OneToMany(mappedBy = "vehiculo")
     private List<Mantenimiento> mantenimientos;
+
     @OneToMany(mappedBy = "vehiculo")
     private List<Seguro> seguros;
-    // Getters y setters
 }

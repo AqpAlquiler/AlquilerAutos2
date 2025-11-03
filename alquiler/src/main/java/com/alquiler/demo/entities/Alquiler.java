@@ -1,24 +1,46 @@
 package com.alquiler.demo.entities;
-import jakarta.persistence.*;
+
 import java.math.BigDecimal;
 import java.time.LocalDate;
+import java.util.List;
+
+import jakarta.persistence.*;
+import lombok.Getter;
+import lombok.Setter;
+
+@Getter
+@Setter
 @Entity
 @Table(name = "Alquiler")
 public class Alquiler {
+
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private Integer id_alquiler;
-    private LocalDate fecha_inicio_real;
-    private LocalDate fecha_fin_real;
-    private Integer kilometraje_inicio;
-    private Integer kilometraje_fin;
-    private BigDecimal costo_total;
+    @Column(name = "id_alquiler")
+    private Integer idAlquiler;
+
+    @Column(name = "fecha_inicio_real")
+    private LocalDate fechaInicioReal;
+
+    @Column(name = "fecha_fin_real")
+    private LocalDate fechaFinReal;
+
+    @Column(name = "kilometraje_inicio")
+    private Integer kilometrajeInicio;
+
+    @Column(name = "kilometraje_fin")
+    private Integer kilometrajeFin;
+
+    @Column(name = "costo_total")
+    private BigDecimal costoTotal;
+
     @OneToOne
     @JoinColumn(name = "id_contrato")
     private Contrato contrato;
+
     @OneToMany(mappedBy = "alquiler")
-    private java.util.List<Pago> pagos;
+    private List<Pago> pagos;
+
     @OneToMany(mappedBy = "alquiler")
-    private java.util.List<Danio> danos;
-    // Getters y setters
+    private List<Danio> danos;
 }

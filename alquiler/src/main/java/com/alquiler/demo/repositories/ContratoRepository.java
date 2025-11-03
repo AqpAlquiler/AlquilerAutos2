@@ -12,14 +12,15 @@ import java.util.Optional;
 public interface ContratoRepository extends JpaRepository<Contrato, Integer> {
 
     // 🔹 Buscar contratos por rango de fechas de firma
-    List<Contrato> findByFecha_firmaBetween(LocalDate inicio, LocalDate fin);
+    List<Contrato> findByFechaFirmaBetween(LocalDate inicio, LocalDate fin);
 
     // 🔹 Buscar contratos firmados antes de cierta fecha
-    List<Contrato> findByFecha_firmaBefore(LocalDate fecha);
+    List<Contrato> findByFechaFirmaBefore(LocalDate fecha);
 
     // 🔹 Buscar contrato asociado a una reserva específica
-    Optional<Contrato> findByReserva_Id_reserva(Integer id_reserva);
+    Optional<Contrato> findByReserva_IdReserva(Integer idReserva);
 
     // 🔹 Buscar todos los contratos firmados por un empleado
-    List<Contrato> findByEmpleado_Id_empleado(Integer id_empleado);
+    List<Contrato> findByEmpleado_IdEmpleado(Integer idEmpleado);
 }
+

@@ -12,16 +12,16 @@ import java.util.List;
 public interface MantenimientoRepository extends JpaRepository<Mantenimiento, Integer> {
 
     // 🔹 Buscar mantenimientos realizados entre dos fechas
-    List<Mantenimiento> findByFecha_mantenimientoBetween(LocalDate inicio, LocalDate fin);
+    List<Mantenimiento> findByFechaMantenimientoBetween(LocalDate inicio, LocalDate fin);
 
     // 🔹 Buscar mantenimientos por tipo exacto (ej: "Preventivo", "Correctivo")
     List<Mantenimiento> findByTipo(String tipo);
 
     // 🔹 Buscar mantenimientos realizados por un empleado específico
-    List<Mantenimiento> findByEmpleado_Id_empleado(Integer id_empleado);
+    List<Mantenimiento> findByEmpleado_IdEmpleado(Integer idEmpleado);
 
     // 🔹 Buscar mantenimientos asociados a un vehículo específico
-    List<Mantenimiento> findByVehiculo_Id_vehiculo(Integer id_vehiculo);
+    List<Mantenimiento> findByVehiculo_IdVehiculo(Integer idVehiculo);
 
     // 🔹 Buscar mantenimientos con costo mayor a cierto valor
     List<Mantenimiento> findByCostoGreaterThan(BigDecimal costoMinimo);
@@ -29,3 +29,4 @@ public interface MantenimientoRepository extends JpaRepository<Mantenimiento, In
     // 🔹 Buscar mantenimientos dentro de un rango de costos
     List<Mantenimiento> findByCostoBetween(BigDecimal costoMinimo, BigDecimal costoMaximo);
 }
+
