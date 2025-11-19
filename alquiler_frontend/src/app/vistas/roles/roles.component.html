@@ -1,0 +1,45 @@
+<div class="container">
+    <h1 class="text-center mb-4">👤 Gestión de Roles</h1>
+
+    <p class="text-center mb-4">
+        Asigna o actualiza los roles de los usuarios registrados en el sistema.
+    </p>
+
+    <table class="table table-hover table-bordered align-middle text-center">
+        <thead>
+            <tr>
+                <th>ID Usuario</th>
+                <th>Nombre de Usuario</th>
+                <th>Rol Actual</th>
+                <th>Estado</th>
+                <th>Asignar Nuevo Rol</th>
+                <th>Acción</th>
+            </tr>
+        </thead>
+
+        <tbody>
+            <tr>
+                <td>12</td>
+                <td>Diaz</td>
+                <td>Admin</td>
+                <td>Acrivo</td>
+                <td>
+                    <div class="d-flex justify-content-center align-items-center gap-2">
+                        <select class="form-select form-select-sm" style="width: 150px;">
+                            <option>Cliente</option>
+                            <option>Empleado</option>
+                            <option>Admin</option>
+                        </select>
+                    </div>
+                </td>
+                <td>
+                    <button class="btn btn-primary btn-sm">Guardar</button>
+                </td>
+            </tr>
+        </tbody>
+    </table>
+
+    <div class="text-center mt-4">
+        <a routerLink="/inicio" class="btn btn-secondary">⬅ Volver al Panel</a>
+    </div>
+</div>

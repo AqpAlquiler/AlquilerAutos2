@@ -1,0 +1,67 @@
+<div class="page-container">
+
+    <div class="welcome">
+        <h1 style="font-size: 2rem; color: #ffffff;">🚗 Registro de Cliente</h1>
+        <p style="font-size: 1.1rem;">Ingresa tus datos para registrarte en RentDrive</p>
+    </div>
+
+    <div class="form-container">
+
+        <form>
+
+            <div class="row mb-3">
+                <div class="col-md-6">
+                    <label class="form-label">Nombre</label>
+                    <input type="text" class="form-control"
+                           name="nombre"
+                           placeholder="Ej. Juan" required>
+                </div>
+
+                <div class="col-md-6">
+                    <label class="form-label">Apellido</label>
+                    <input type="text" class="form-control"
+                            name="apellido"
+                           placeholder="Ej. Pérez" required>
+                </div>
+            </div>
+
+            <div class="mb-3">
+                <label class="form-label">DNI</label>
+                <input type="text" class="form-control"
+                        name="dni"
+                       placeholder="Ej. 78965412" required>
+            </div>
+
+            <div class="row mb-3">
+                <div class="col-md-6">
+                    <label class="form-label">Teléfono</label>
+                    <input type="text" class="form-control"
+                            name="telefono"
+                           placeholder="Ej. 987654321">
+                </div>
+
+                <div class="col-md-6">
+                    <label class="form-label">Correo electrónico</label>
+                    <input type="email" class="form-control"
+                           name="email"
+                           placeholder="Ej. cliente@gmail.com">
+                </div>
+            </div>
+
+            <div class="mb-3">
+                <label class="form-label">Dirección</label>
+                <input type="text" class="form-control"
+                       name="direccion"
+                       placeholder="Ej. Av. Lima 123, Juliaca">
+            </div>
+
+            <div class="d-grid gap-2">
+                <button (click)="registrarCliente()" class="btn btn-primary">Registrar</button>
+
+<button (click)="goToRegresar()" class="btn btn-secondary">Salir</button>
+            </div>
+
+        </form>
+
+    </div>
+</div>

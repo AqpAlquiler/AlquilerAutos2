@@ -11,33 +11,29 @@ import { NuevoAlquilerComponent } from './vistas/nuevo-alquiler/nuevo-alquiler.c
 import { ListaAlquileresComponent } from './vistas/lista-alquileres/lista-alquileres.component';
 import { DashboardProgramComponent } from './vistas/dashboard-program/dashboard-program.component';  
 import { GestionPagosComponent } from './vistas/gestion-pagos/gestion-pagos.component';
-
+import { LoginComponent } from './vistas/login/login.component';
 
 
 
 
 
 export const routes: Routes = [
-{
-    path: '',
-    component: InicioComponent,
-    children: [
-      { path: '', component: InicioComponent }, // / → Bienvenida simple
-      { path: 'catalogo', component: CatalogoComponent },
-      { path: 'perfil', component: PerfilComponent },
-      { path: 'reserva', component: ReservaComponent }
-    ]
-  },
+  // 🌐 Público: landing + vistas independientes
+  { path: '', component: InicioComponent },
+  { path: 'catalogo', component: CatalogoComponent },
+  { path: 'perfil', component: PerfilComponent },
+  { path: 'reserva', component: ReservaComponent },
+  { path: 'login', component: LoginComponent }, // 👈 Aquí va
 
-  // ✅ Layout dashboard
+  // 🛠️ Dashboard (protegido)
   {
     path: 'dashboard',
     component: DashboardLayoutComponent,
     children: [
+      { path: '', component: DashboardProgramComponent }, // 👈 Ruta raíz
       { path: 'devoluciones', component: DevolucionesComponent },
       { path: 'nuevo-alquiler', component: NuevoAlquilerComponent },
       { path: 'lista-alquileres', component: ListaAlquileresComponent },
-      { path: 'dashboard-program', component: DashboardProgramComponent },
       { path: 'gestion-pagos', component: GestionPagosComponent }
     ]
   },
