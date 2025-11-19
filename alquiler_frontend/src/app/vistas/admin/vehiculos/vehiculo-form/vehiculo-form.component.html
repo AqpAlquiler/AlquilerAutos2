@@ -1,0 +1,56 @@
+<div class="container mt-5 pt-4">
+
+  <h2 class="text-center mb-4">{{ titulo }}</h2>
+
+  <form [formGroup]="vehiculoForm" (ngSubmit)="guardar()" enctype="multipart/form-data"
+        class="border p-4 rounded bg-light shadow-sm">
+
+    <div class="form-group">
+      <label>Marca</label>
+      <input formControlName="marca" type="text" class="form-control" placeholder="Ej. Toyota">
+    </div>
+
+    <div class="form-group">
+      <label>Modelo</label>
+      <input formControlName="modelo" type="text" class="form-control" placeholder="Ej. Corolla">
+    </div>
+
+    <div class="form-group">
+      <label>Año</label>
+      <input formControlName="anio" type="number" class="form-control" min="1990" max="2025">
+    </div>
+
+    <div class="form-group">
+      <label>Placa</label>
+      <input formControlName="placa" type="text" class="form-control" placeholder="ABC-123">
+    </div>
+
+    <div class="form-group">
+      <label>Precio por día (S/)</label>
+      <input formControlName="precioDia" type="number" step="0.01" class="form-control">
+    </div>
+
+    <div class="form-group">
+      <label>Disponible</label>
+      <select formControlName="disponible" class="form-control">
+        <option [value]="true">Sí</option>
+        <option [value]="false">No</option>
+      </select>
+    </div>
+
+    <div class="form-group">
+      <label>Imagen del vehículo</label>
+      <input type="file" class="form-control-file" (change)="seleccionarImagen($event)" accept="image/*">
+
+      <div *ngIf="imagenActual" class="mt-2">
+        <img [src]="'http://localhost:8080/uploads/' + imagenActual" alt="Vehículo" width="150" class="rounded shadow-sm">
+      </div>
+    </div>
+
+    <div class="text-center mt-4">
+      <button type="submit" class="btn btn-primary px-4">Guardar</button>
+      <a routerLink="/vehiculos" class="btn btn-secondary px-4 ml-2">Cancelar</a>
+    </div>
+
+  </form>
+</div>

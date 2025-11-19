@@ -13,9 +13,9 @@ import { DashboardProgramComponent } from './vistas/dashboard-program/dashboard-
 import { GestionPagosComponent } from './vistas/gestion-pagos/gestion-pagos.component';
 import { LoginComponent } from './vistas/login/login.component';
 import { RegistroComponent } from './vistas/registro/registro.component';
-
-
-
+import { VehiculoDetalleComponent } from './vistas/admin/vehiculos/vehiculo-detalle/vehiculo-detalle.component';
+import { VehiculoFormComponent } from './vistas/admin/vehiculos/vehiculo-form/vehiculo-form.component';
+import { VehiculoListarComponent } from './vistas/admin/vehiculos/vehiculo-listar/vehiculo-listar.component';
 
 
 export const routes: Routes = [
@@ -38,7 +38,15 @@ export const routes: Routes = [
       { path: 'gestion-pagos', component: GestionPagosComponent }
     ]
   },
-    { path: 'registro', component: RegistroComponent },
+     { path: 'registro', component: RegistroComponent },
+
+  // Vehículos
+  { path: 'vehiculos/listar', component: VehiculoListarComponent },
+  { path: 'vehiculos/detalle/:id', component: VehiculoDetalleComponent },
+  { path: 'vehiculos/nuevo', component: VehiculoFormComponent },
+  { path: 'vehiculos/editar/:id', component: VehiculoFormComponent },
+
+ 
   { path: '**', redirectTo: '' }
 ];
 
