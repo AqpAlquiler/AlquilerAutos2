@@ -1,47 +1,51 @@
-<div class="page-container">
-
-    <div class="welcome">
-        <h1 style="font-size: 2rem; color: #ffffff;">🚗 Registro de Cliente</h1>
-        <p style="font-size: 1.1rem;">Ingresa tus datos para registrarte en RentDrive</p>
-    </div>
+<div class="page-container"
+     style="
+        background:
+            linear-gradient(135deg, rgba(11,61,145,0.7), rgba(20,33,61,0.85)),
+            url('https://editorial.pxcrush.net/carsales/general/editorial/160217_Subaru_WRX_STI_VS_Mitsubishi_Evoloution_X_20.jpg?width=1024&height=682');
+        background-size: cover;
+        background-position: center;
+        background-repeat: no-repeat;
+     ">
 
     <div class="form-container">
 
         <form>
+            <h3 class="d-grid gap-2" style="color: white;">Registro de Nuevo Cliente</h3>
 
             <div class="row mb-3">
                 <div class="col-md-6">
-                    <label class="form-label">Nombre</label>
+                    <label class="form-label" style="color: white;">Nombre</label>
                     <input type="text" class="form-control"
                            name="nombre"
                            placeholder="Ej. Juan" required>
                 </div>
 
                 <div class="col-md-6">
-                    <label class="form-label">Apellido</label>
+                    <label class="form-label" style="color: white;">Apellido</label>
                     <input type="text" class="form-control"
-                            name="apellido"
+                           name="apellido"
                            placeholder="Ej. Pérez" required>
                 </div>
             </div>
 
             <div class="mb-3">
-                <label class="form-label">DNI</label>
+                <label class="form-label" style="color: white;">DNI</label>
                 <input type="text" class="form-control"
-                        name="dni"
+                       name="dni"
                        placeholder="Ej. 78965412" required>
             </div>
 
             <div class="row mb-3">
                 <div class="col-md-6">
-                    <label class="form-label">Teléfono</label>
+                    <label class="form-label" style="color: white;">Teléfono</label>
                     <input type="text" class="form-control"
-                            name="telefono"
+                           name="telefono"
                            placeholder="Ej. 987654321">
                 </div>
 
                 <div class="col-md-6">
-                    <label class="form-label">Correo electrónico</label>
+                    <label class="form-label" style="color: white;">Correo electrónico</label>
                     <input type="email" class="form-control"
                            name="email"
                            placeholder="Ej. cliente@gmail.com">
@@ -49,7 +53,7 @@
             </div>
 
             <div class="mb-3">
-                <label class="form-label">Dirección</label>
+                <label class="form-label" style="color: white;">Dirección</label>
                 <input type="text" class="form-control"
                        name="direccion"
                        placeholder="Ej. Av. Lima 123, Juliaca">
@@ -57,11 +61,11 @@
 
             <div class="d-grid gap-2">
                 <button (click)="registrarCliente()" class="btn btn-primary">Registrar</button>
-
-<button (click)="goToRegresar()" class="btn btn-secondary">Salir</button>
+                <button (click)="goToRegresar()" class="btn btn-secondary">Salir</button>
             </div>
 
         </form>
 
     </div>
+
 </div>

@@ -12,6 +12,7 @@ import { ListaAlquileresComponent } from './vistas/lista-alquileres/lista-alquil
 import { DashboardProgramComponent } from './vistas/dashboard-program/dashboard-program.component';  
 import { GestionPagosComponent } from './vistas/gestion-pagos/gestion-pagos.component';
 import { LoginComponent } from './vistas/login/login.component';
+import { RegistroComponent } from './vistas/registro/registro.component';
 
 
 
@@ -37,7 +38,7 @@ export const routes: Routes = [
       { path: 'gestion-pagos', component: GestionPagosComponent }
     ]
   },
-
+    { path: 'registro', component: RegistroComponent },
   { path: '**', redirectTo: '' }
 ];
 
