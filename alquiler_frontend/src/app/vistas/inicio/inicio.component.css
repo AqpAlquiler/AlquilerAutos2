@@ -246,22 +246,36 @@ html, body {
   font-size: 1.2rem;
 }
 
-/* Redes sociales */
+/* Redes sociales limpio */
 .social-icons {
   margin: 25px 0;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.social-icons a {
+  display: inline-block;
+  margin: 0 12px;
+  transition: transform 0.3s ease;
 }
 
 .social-icons a img {
   width: 45px;
-  margin: 0 12px;
-  transition: transform 0.3s ease;
-  filter: brightness(0) invert(1);
+  height: 45px;
+  display: block;
+  /* Eliminamos filtros que alteran colores del PNG */
+  filter: none;
+  background: transparent;
+  border-radius: 50%; /* opcional: si quieres borde redondeado */
+  transition: transform 0.3s ease, opacity 0.3s ease;
 }
 
 .social-icons a img:hover {
   transform: scale(1.2);
-  filter: brightness(1);
+  opacity: 0.85; /* efecto sutil en hover */
 }
+
 
 /* Copyright */
 .footer-copy {

@@ -9,14 +9,23 @@
   </button>
 
   <div class="collapse navbar-collapse" id="navbarNav">
-    <ul class="navbar-nav ml-auto">
+    <!-- Menú principal (FullPage anchors) -->
+    <ul class="navbar-nav me-auto">
       <li class="nav-item"><a class="nav-link" data-menuanchor="inicio" href="#inicio">Inicio</a></li>
-      <li class="nav-item"><a class="nav-link" data-menuanchor="vehiculos" href="#vehiculos">Vehículos</a></li>
+      <li class="nav-item"><a class="nav-link" data-menuanchor="vehiculos" href="#vehiculos">Destacados</a></li>
       <li class="nav-item"><a class="nav-link" data-menuanchor="servicios" href="#servicios">Servicios</a></li>
       <li class="nav-item"><a class="nav-link" data-menuanchor="contacto" href="#contacto">Contacto</a></li>
     </ul>
+
+    <!-- Botones adicionales alineados a la derecha -->
+    <ul class="navbar-nav ms-auto">
+      <li class="nav-item"><a class="nav-link" routerLink="/catalogo">Catálogo</a></li>
+      <li class="nav-item"><a class="nav-link" routerLink="/login">Iniciar Sesión</a></li>
+      <li class="nav-item"><a class="nav-link" routerLink="/perfil">Perfil</a></li>
+    </ul>
   </div>
 </nav>
+
 
 <!-- CONTENEDOR FULLPAGE -->
 <div id="fullpage">
@@ -32,24 +41,30 @@
   </div>
 
   <!-- SECCIÓN 2 -->
-  <div class="section" id="vehiculos">
-    <div class="container">
-      <h2 class="section-title" id="titulov">Vehículos Destacados</h2>
+<div class="section" id="vehiculos">
+  <div class="container">
+    <h2 class="section-title" id="titulov" data-aos="fade-up" data-aos-duration="1000">
+      Vehículos Destacados
+    </h2>
 
-      <div class="row">
-        <div class="col-md-3 mb-4" *ngFor="let auto of vehiculosDestacados">
-          <div class="card">
-            <img [src]="auto.imagen" class="card-img-top">
-            <div class="card-body text-center">
-              <h5 class="card-title">{{ auto.nombre }}</h5>
-              <p class="card-text">Desde {{ auto.precio }} por día</p>
-            </div>
+    <div class="row">
+      <div class="col-md-3 mb-4" *ngFor="let auto of vehiculosDestacados; let i = index"
+           data-aos="fade-up"
+           [attr.data-aos-delay]="i * 150"
+           data-aos-duration="1000">
+        <div class="card vehicle-card h-100">
+          <img [src]="auto.imagen" class="card-img-top">
+          <div class="card-body text-center">
+            <h5 class="card-title">{{ auto.nombre }}</h5>
+            <p class="card-text">Desde {{ auto.precio }} por día</p>
           </div>
         </div>
       </div>
-
     </div>
+
   </div>
+</div>
+
 
  <!-- SECCIÓN 3 -->
 <div class="section" id="servicios">

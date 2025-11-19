@@ -1,12 +1,13 @@
 import { Component } from '@angular/core';
 import { RouterOutlet } from '@angular/router';
-import {InicioComponent} from '../app/vistas/inicio/inicio.component';
+
 
 @Component({
   selector: 'app-root',
-  imports: [InicioComponent],
+  standalone: true,              // indica que es standalone
+  imports: [RouterOutlet], // IMPORTANTE: incluye RouterOutlet
   templateUrl: './app.component.html',
-  styleUrl: './app.component.css'
+  styleUrls: ['./app.component.css']
 })
 export class AppComponent {
   title = 'alquiler_autos';
