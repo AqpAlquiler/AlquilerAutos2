@@ -1,6 +1,7 @@
 <!-- NAVBAR -->
 <nav class="navbar navbar-expand-lg navbar-dark bg-dark fixed-top">
   <a class="navbar-brand" routerLink="/">RentDrive</a>
+
   <button class="navbar-toggler" type="button" data-toggle="collapse"
           data-target="#navbarNav" aria-controls="navbarNav"
           aria-expanded="false" aria-label="Toggle navigation">
@@ -9,77 +10,99 @@
 
   <div class="collapse navbar-collapse" id="navbarNav">
     <ul class="navbar-nav ml-auto">
-      <li class="nav-item"><a class="nav-link" href="#inicio">Inicio</a></li>
-      <li class="nav-item"><a class="nav-link" href="#vehiculos">Vehículos</a></li>
-      <li class="nav-item"><a class="nav-link" href="#servicios">Servicios</a></li>
-      <li class="nav-item"><a class="nav-link" href="#footer">Contacto</a></li>
+      <li class="nav-item"><a class="nav-link" data-menuanchor="inicio" href="#inicio">Inicio</a></li>
+      <li class="nav-item"><a class="nav-link" data-menuanchor="vehiculos" href="#vehiculos">Vehículos</a></li>
+      <li class="nav-item"><a class="nav-link" data-menuanchor="servicios" href="#servicios">Servicios</a></li>
+      <li class="nav-item"><a class="nav-link" data-menuanchor="contacto" href="#contacto">Contacto</a></li>
     </ul>
   </div>
 </nav>
 
-<!-- CONTENEDOR PRINCIPAL -->
-<main>
+<!-- CONTENEDOR FULLPAGE -->
+<div id="fullpage">
 
-  <!-- SECCIÓN 1: INICIO -->
-  <section id="inicio" class="section hero">
+  <!-- SECCIÓN 1 -->
+  <div class="section hero" id="inicio">
     <div class="hero-content text-center">
       <h1>Alquila tu vehículo ideal con <span class="text-primary">RentDrive</span></h1>
       <p>Explora nuestra amplia flota y conduce con seguridad, comodidad y confianza.</p>
 
-      <!-- Routing Angular -->
       <a routerLink="/auth/registro" class="btn btn-primary btn-lg">Regístrate Ahora</a>
     </div>
-  </section>
+  </div>
 
-  <!-- SECCIÓN 2: VEHÍCULOS DESTACADOS -->
-  <section id="vehiculos" class="section">
+  <!-- SECCIÓN 2 -->
+  <div class="section" id="vehiculos">
     <div class="container">
-      <h2 class="section-title">Vehículos Destacados</h2>
+      <h2 class="section-title" id="titulov">Vehículos Destacados</h2>
 
       <div class="row">
-
-        <!-- SE GENERAN DINÁMICAMENTE CON *ngFor -->
         <div class="col-md-3 mb-4" *ngFor="let auto of vehiculosDestacados">
           <div class="card">
-            <img [src]="auto.imagen" class="card-img-top" alt="Vehículo">
+            <img [src]="auto.imagen" class="card-img-top">
             <div class="card-body text-center">
               <h5 class="card-title">{{ auto.nombre }}</h5>
               <p class="card-text">Desde {{ auto.precio }} por día</p>
             </div>
           </div>
         </div>
-
       </div>
 
     </div>
-  </section>
+  </div>
 
-  <!-- SECCIÓN 3: SERVICIOS -->
-  <section id="servicios" class="section">
-    <div class="container">
-      <h2 class="section-title">Nuestros Servicios</h2>
+ <!-- SECCIÓN 3 -->
+<div class="section" id="servicios">
+  <div class="container">
+    <h2 class="section-title">Nuestros Servicios</h2>
 
-      <div class="row">
+    <div class="row">
+      <div class="col-md-4 mb-4" *ngFor="let s of servicios">
+        <div class="card text-center p-4">
 
-        <div class="col-md-4 mb-4" *ngFor="let s of servicios">
-          <div class="card text-center p-3">
-            <img [src]="s.icono" width="80" class="mx-auto" alt="Servicio">
-            <div class="card-body">
-              <h5 class="card-title">{{ s.titulo }}</h5>
-              <p class="card-text">{{ s.descripcion }}</p>
-            </div>
+          <!-- Ícono -->
+          <div class="service-icon mb-3">
+            <i [class]="s.icono"></i>
           </div>
+
+          <div class="card-body">
+            <h5 class="card-title">{{ s.titulo }}</h5>
+            <p class="card-text">{{ s.descripcion }}</p>
+          </div>
+
         </div>
-
       </div>
-
     </div>
-  </section>
+  </div>
+</div>
 
-</main>
 
-<!-- FOOTER -->
-<footer id="footer" class="text-center py-3 bg-dark text-light">
-  <p>© 2025 RentDrive. Todos los derechos reservados.</p>
-  <p><a href="#" class="text-primary">Términos y Condiciones</a> | <a href="#" class="text-primary">Política de Privacidad</a></p>
-</footer>
+ <div class="section" id="contacto">
+        <div class="footer-full">
+
+            <h2 class="footer-title">Contáctanos</h2>
+            <p class="footer-subtitle">Siempre listos para ayudarte</p>
+
+            <div class="contact-info">
+                <p><strong>📞 Teléfono:</strong> +51 999 999 999</p>
+                <p><strong>📍 Dirección:</strong> Arequipa, Perú</p>
+                <p><strong>📧 Email:</strong> contacto&#64;rentdrive.com</p>
+            </div>
+
+            <div class="social-icons">
+                <a href="#"><img src="/images/facebook.png"></a>
+                <a href="#"><img src="/images/instagram.png"></a>
+                <a href="#"><img src="/images/whatsapp.png"></a>
+            </div>
+
+            <p class="footer-copy">
+                © 2025 RentDrive. Todos los derechos reservados. <br>
+                <a class="footer-link" href="#">Términos y Condiciones</a> |
+                <a class="footer-link" href="#">Política de Privacidad</a>
+            </p>
+
+        </div>
+    </div>
+
+</div>
+
