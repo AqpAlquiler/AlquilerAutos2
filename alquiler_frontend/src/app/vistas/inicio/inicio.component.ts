@@ -25,9 +25,9 @@ export class InicioComponent implements AfterViewInit, OnDestroy {
   ];
 
   servicios = [
-    { titulo: 'Alquiler por Día', descripcion: 'Renta el vehículo...', icono: '/icons/day.png' },
-    { titulo: 'Alquiler Mensual', descripcion: 'Ideal para empresas...', icono: '/icons/week.png' },
-    { titulo: 'Entrega a Domicilio', descripcion: 'Recibe y devuelve...', icono: '/icons/company.png' }
+    { titulo: 'Alquiler por Día', descripcion: 'Renta el vehículo...', icono: '/images/day.png' },
+    { titulo: 'Alquiler Mensual', descripcion: 'Ideal para empresas...', icono: '/images/mes.jpg' },
+    { titulo: 'A Domicilio', descripcion: 'Recibe y devuelve...', icono: '/images/house.png' }
   ];
 
   ngAfterViewInit(): void {

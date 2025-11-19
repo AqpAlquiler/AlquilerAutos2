@@ -155,6 +155,10 @@ html, body {
   position: relative;
 }
 
+.section-title#titulos {
+  color: #ffffff;
+}
+
 /* Capa oscura suave para que las cards resalten */
 .section#servicios::before {
   content: "";
@@ -204,8 +208,10 @@ html, body {
 .service-icon {
   width: 45px;
   height: 45px;
-  opacity: 0.9; /* ligera transparencia del icono */
+  object-fit: contain; /* Mantiene proporción */
+  opacity: 0.9;
 }
+
 
 
 

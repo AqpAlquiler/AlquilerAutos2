@@ -69,16 +69,17 @@
  <!-- SECCIÓN 3 -->
 <div class="section" id="servicios">
   <div class="container">
-    <h2 class="section-title">Nuestros Servicios</h2>
+    <h2 class="section-title" id="titulos">Nuestros Servicios</h2>
 
     <div class="row">
       <div class="col-md-4 mb-4" *ngFor="let s of servicios">
         <div class="card text-center p-4">
 
-          <!-- Ícono -->
-          <div class="service-icon mb-3">
-            <i [class]="s.icono"></i>
-          </div>
+         <!-- Ícono con imagen -->
+<div class="icon-wrapper mb-3">
+  <img [src]="s.icono" alt="{{ s.titulo }}" class="service-icon">
+</div>
+
 
           <div class="card-body">
             <h5 class="card-title">{{ s.titulo }}</h5>
