@@ -1,6 +1,8 @@
 package com.alquiler.demo.controllers;
 
 
+import java.util.List;
+
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
@@ -22,6 +24,11 @@ public class VehiculoController {
 	@PostMapping("/crear")
 	public Vehiculo save(@RequestBody Vehiculo vehiculo) {
 		return vehiculoService.save(vehiculo);
+	}
+	
+	@GetMapping("listar")
+	public List<Vehiculo> finAll(){
+		return vehiculoService.findAll();
 	}
 
     @GetMapping("/vehiculo_listar")

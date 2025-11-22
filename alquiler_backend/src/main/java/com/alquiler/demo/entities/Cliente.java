@@ -2,8 +2,11 @@ package com.alquiler.demo.entities;
 
 import jakarta.persistence.*;
 import java.util.List;
+
+
 import lombok.Getter;
 import lombok.Setter;
+
 
 @Getter
 @Setter
