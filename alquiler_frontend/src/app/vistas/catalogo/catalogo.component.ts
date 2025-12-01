@@ -25,7 +25,7 @@ export class CatalogoComponent {
     precioMax: ''
   };
 
-  vehiculos = [
+  vehiculos = [ 
     { marca: 'Toyota', modelo: 'Corolla', anio: 2022, precioDia: 150, imagen: '/images/corolla.jpg' },
     { marca: 'Hyundai', modelo: 'Tucson', anio: 2023, precioDia: 220, imagen: '/images/tucson.jpg' },
     { marca: 'Kia', modelo: 'Sportage', anio: 2022, precioDia: 180, imagen: '/images/sportage.jpg' },

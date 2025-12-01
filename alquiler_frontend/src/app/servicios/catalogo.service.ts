@@ -1,0 +1,23 @@
+import { Injectable } from '@angular/core';
+import { HttpClient } from '@angular/common/http';
+import { Observable } from 'rxjs';
+import { Catalogo } from '../clases/catalogo';
+
+@Injectable({
+  providedIn: 'root'
+})
+export class CatalogoService {
+
+  private apiUrl = 'http://localhost:8080/api/vehiculos'; // Ajustar según el endpoint real
+
+  constructor(private http: HttpClient) { }
+
+  getVehiculos(): Observable<Catalogo[]> {
+    return this.http.get<Catalogo[]>(this.apiUrl);
+  }
+
+  // Método adicional para obtener un vehículo por ID (ejemplo)
+  getVehiculo(id: number): Observable<Catalogo> {
+    return this.http.get<Catalogo>(`${this.apiUrl}/${id}`);
+  }
+}

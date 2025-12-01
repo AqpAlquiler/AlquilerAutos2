@@ -6,6 +6,7 @@ import java.util.List;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
+import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
 import com.alquiler.demo.entities.Vehiculo;
@@ -13,6 +14,7 @@ import com.alquiler.demo.services.VehiculoService;
 
 
 @RestController
+@RequestMapping("/api/vehiculos")
 public class VehiculoController {
 	
 	private final VehiculoService vehiculoService;
@@ -21,33 +23,15 @@ public class VehiculoController {
 		this.vehiculoService = vehiculoService;
 	}
 
-	@PostMapping("/crear")
+	@PostMapping
 	public Vehiculo save(@RequestBody Vehiculo vehiculo) {
 		return vehiculoService.save(vehiculo);
 	}
 	
-	@GetMapping("listar")
+	@GetMapping
 	public List<Vehiculo> finAll(){
 		return vehiculoService.findAll();
 	}
 
-    @GetMapping("/vehiculo_listar")
-    public String listarVehiculos() {
-        return "admin/vehiculo_listar";
-    }
-
-    @GetMapping("/vehiculos_form")
-    public String agregarVehiculo() {
-        return "admin/vehiculo_form";
-    }
-
-    @GetMapping("/vehiculo_detalle")
-    public String editarVehiculo() {
-        return "admin/vehiculo_detalle";
-    }
-
-    @GetMapping("/vehiculos_mantenimiento")
-    public String mantenimientoVehiculo() {
-        return "admin/vehiculo_mantenimiento";
-    }
+    
 }

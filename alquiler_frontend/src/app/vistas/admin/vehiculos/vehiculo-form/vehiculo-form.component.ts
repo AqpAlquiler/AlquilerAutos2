@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { FormBuilder, Validators, ReactiveFormsModule, FormGroup } from '@angular/forms';
 import { ActivatedRoute, Router, RouterModule } from '@angular/router';
-import { VehiculoService } from '../../../vehiculo/vehiculo.service';
+import { VehiculoService } from '../vehiculo/vehiculo.service';
 import { CommonModule } from '@angular/common';
 
 @Component({
