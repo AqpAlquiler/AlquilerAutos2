@@ -43,7 +43,14 @@
           <option *ngFor="let a of anios" [value]="a">{{ a }}</option>
         </select>
       </div>
+
+      <!-- Precio máximo -->
+  <div class="col-md-3">
+    <label class="form-label fw-bold">Precio máximo</label>
+    <input type="number" class="form-control" [(ngModel)]="filtro.precioMax" name="precioMax" placeholder="S/">
+  </div>
     </div> 
+    
     
     
     <!-- Botones -->
@@ -52,6 +59,11 @@
       <button class="btn btn-secondary" (click)="limpiar()">Limpiar</button>
     </div>
   </form>
+
+      <!-- Mensaje de error -->
+<div *ngIf="errorMsg" class="alert alert-danger">
+  {{ errorMsg }}
+</div>
 
   <!-- RESULTADOS -->
   <div class="row g-4">

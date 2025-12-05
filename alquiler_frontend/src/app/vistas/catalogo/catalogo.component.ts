@@ -21,10 +21,12 @@ export class CatalogoComponent implements OnInit {
   anioFiltro: number | null = null;
   marcas: string[] = [];
   anios: number[] = [];
+  errorMsg: string = '';
 
   filtro = {
   marca: "",
-  anio: ""
+  anio: "",
+  precioMax: ''
 };
 
   constructor(private catalogoService:CatalogoService) { }
@@ -50,38 +52,53 @@ export class CatalogoComponent implements OnInit {
   } 
 
 
-  filtrar() {
-
+filtrar() {
   // Si no hay filtros → listar todo
-  if (!this.filtro.marca && !this.filtro.anio) {
+  if (!this.filtro.marca && !this.filtro.anio && !this.filtro.precioMax) {
     this.listarCatalogo();
     return;
   }
 
-  // Si solo hay marca → filtrar por marca
-  if (this.filtro.marca && !this.filtro.anio) {
-    this.catalogoService.getVehiculosPorMarca(this.filtro.marca).subscribe(
-      data => this.catalogos = data,
-      error => console.error('Error filtrando por marca', error)
-    );
-    return;
-  }
+  // Traemos todos los vehículos primero
+  this.catalogoService.getVehiculos().subscribe(
+    data => {
+      let resultado = data;
 
-  // Si solo hay año → filtrar por año
-  if (!this.filtro.marca && this.filtro.anio) {
-    this.catalogoService.getVehiculosPorAnio(Number(this.filtro.anio)).subscribe(
-      data => this.catalogos = data,
-      error => console.error('Error filtrando por año', error)
-    );
-    return;
-  }
+      // Filtrar por marca
+      if (this.filtro.marca) {
+        resultado = resultado.filter(v => v.marca === this.filtro.marca);
+      }
+
+      // Filtrar por año
+      if (this.filtro.anio) {
+        resultado = resultado.filter(v => v.anio === Number(this.filtro.anio));
+      }
+
+      // Filtrar por precio máximo
+      if (this.filtro.precioMax) {
+        resultado = resultado.filter(v => v.precioDiario <= Number(this.filtro.precioMax));
+      }
+
+      this.catalogos = resultado;
+     if (resultado.length === 0) {
+        this.errorMsg = 'No se encontraron coinsidencias!';
+      } else {
+        this.errorMsg = '';
+      }
+    },
+    error => this.errorMsg = 'Error al filtrar vehículos'
+  );
 }
+
 
 limpiar() {
   this.filtro = {
     marca: "",
-    anio: ""
+    anio: "",
+    precioMax: ''
   };
+
+  this.errorMsg = '';
 
   this.listarCatalogo(); // recarga el catálogo completo
 }
