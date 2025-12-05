@@ -1,7 +1,9 @@
-import { Component } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { FormsModule } from '@angular/forms';
 import { RouterModule } from '@angular/router';
+import { Catalogo } from '../../clases/catalogo';
+import { CatalogoService } from '../../servicios/catalogo.service';
 
 
 
@@ -12,51 +14,80 @@ import { RouterModule } from '@angular/router';
   templateUrl: './catalogo.component.html',
   styleUrls: ['./catalogo.component.css']
 })
-export class CatalogoComponent {
-  marcas = ['Toyota', 'Hyundai', 'Kia', 'Nissan'];
-  anios = [2025, 2024, 2023, 2022];
-  tipos = ['Sedan', 'SUV', 'Hatchback', 'Camioneta'];
+export class CatalogoComponent implements OnInit {
+
+  catalogos : Catalogo []=[];
+  marcaFiltro: string = "";
+  anioFiltro: number | null = null;
+  marcas: string[] = [];
+  anios: number[] = [];
 
   filtro = {
-    marca: '',
-    anio: '',
-    tipo: '',
-    precioMin: '',
-    precioMax: ''
-  };
+  marca: "",
+  anio: ""
+};
 
-  vehiculos = [ 
-    { marca: 'Toyota', modelo: 'Corolla', anio: 2022, precioDia: 150, imagen: '/images/corolla.jpg' },
-    { marca: 'Hyundai', modelo: 'Tucson', anio: 2023, precioDia: 220, imagen: '/images/tucson.jpg' },
-    { marca: 'Kia', modelo: 'Sportage', anio: 2022, precioDia: 180, imagen: '/images/sportage.jpg' },
-    { marca: 'Nissan', modelo: 'Altima', anio: 2023, precioDia: 200, imagen: '/images/altima.jpg' },
-    { marca: 'Toyota', modelo: 'RAV4', anio: 2024, precioDia: 250, imagen: '/images/rav4.jpg' },
-    { marca: 'Hyundai', modelo: 'Santa Fe', anio: 2024, precioDia: 230, imagen: '/images/santafe.jpg' },
-    { marca: 'Kia', modelo: 'Sorento', anio: 2025, precioDia: 270, imagen: '/images/sorento.jpg' },
-    { marca: 'Nissan', modelo: 'Rogue', anio: 2023, precioDia: 210, imagen: '/images/rogue.jpg' },
-    { marca: 'Toyota', modelo: 'Camry', anio: 2025, precioDia: 260, imagen: '/images/camry.jpg' },
-    { marca: 'Hyundai', modelo: 'Elantra', anio: 2022, precioDia: 170, imagen: '/images/elantra.jpg' },
-    { marca: 'Kia', modelo: 'Rio', anio: 2023, precioDia: 160, imagen: '/images/rio.jpg' },
-    { marca: 'Nissan', modelo: 'Sentra', anio: 2022, precioDia: 155, imagen: '/images/sentra.jpg' },
-    { marca: 'Toyota', modelo: 'Highlander', anio: 2024, precioDia: 280, imagen: '/images/highlander.jpg' },
-    { marca: 'Hyundai', modelo: 'Kona', anio: 2023, precioDia: 190, imagen: '/images/kona.jpg' },
-    { marca: 'Kia', modelo: 'Stinger', anio: 2025, precioDia: 300, imagen: '/images/stinger.jpg' }
-  ];
+  constructor(private catalogoService:CatalogoService) { }
+
+  ngOnInit(): void {
+    this.listarCatalogo();
+  }
+
+  listarCatalogo(){
+    this.catalogoService.getVehiculos().subscribe(
+      (data: Catalogo[]) => {
+        this.catalogos = data;
+      },
+      (error) => {
+        console.error('Error al obtener el catálogo:', error);
+      }
+    );
+  } 
+
 
   filtrar() {
-    console.log('Aplicando filtros...', this.filtro);
+
+  // Si no hay filtros → listar todo
+  if (!this.filtro.marca && !this.filtro.anio) {
+    this.listarCatalogo();
+    return;
   }
 
-  limpiar() {
-    this.filtro = { marca: '', anio: '', tipo: '', precioMin: '', precioMax: '' };
+  // Si solo hay marca → filtrar por marca
+  if (this.filtro.marca && !this.filtro.anio) {
+    this.catalogoService.getVehiculosPorMarca(this.filtro.marca).subscribe(
+      data => this.catalogos = data,
+      error => console.error('Error filtrando por marca', error)
+    );
+    return;
   }
 
-  verDetalles(v: any) {
-    console.log('Detalles:', v);
-  }
-
-  reservar(v: any) {
-    console.log('Reservar:', v);
+  // Si solo hay año → filtrar por año
+  if (!this.filtro.marca && this.filtro.anio) {
+    this.catalogoService.getVehiculosPorAnio(Number(this.filtro.anio)).subscribe(
+      data => this.catalogos = data,
+      error => console.error('Error filtrando por año', error)
+    );
+    return;
   }
 }
 
+limpiar() {
+  this.filtro = {
+    marca: "",
+    anio: ""
+  };
+
+  this.listarCatalogo(); // recarga el catálogo completo
+}
+verDetalles(vehiculo: Catalogo) {
+    console.log("Detalles del vehículo:", vehiculo);
+    // Si tienes ruta → navegar:
+    // this.router.navigate(['/catalogo', vehiculo.id]);
+  }
+
+  reservar(vehiculo: Catalogo) {
+    console.log("Reservando vehículo:", vehiculo);
+    // Aquí normalmente abres un modal o navegas a la reserva
+  }
+}

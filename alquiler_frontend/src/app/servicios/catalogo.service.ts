@@ -20,4 +20,15 @@ export class CatalogoService {
   getVehiculo(id: number): Observable<Catalogo> {
     return this.http.get<Catalogo>(`${this.apiUrl}/${id}`);
   }
+
+  
+  getVehiculosPorMarca(marca: string): Observable<Catalogo[]> {
+  return this.http.get<Catalogo[]>(`${this.apiUrl}/marca/${marca}`);
+}
+
+  getVehiculosPorAnio(anio: number): Observable<Catalogo[]> {
+  return this.http.get<Catalogo[]>(`${this.apiUrl}/anio/${anio}`);
+}
+
+  
 }

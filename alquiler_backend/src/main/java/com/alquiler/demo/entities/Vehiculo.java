@@ -1,7 +1,18 @@
 package com.alquiler.demo.entities;
 
-import jakarta.persistence.*;
 import java.util.List;
+
+import com.fasterxml.jackson.annotation.JsonBackReference;
+
+import jakarta.persistence.Column;
+import jakarta.persistence.Entity;
+import jakarta.persistence.GeneratedValue;
+import jakarta.persistence.GenerationType;
+import jakarta.persistence.Id;
+import jakarta.persistence.JoinColumn;
+import jakarta.persistence.ManyToOne;
+import jakarta.persistence.OneToMany;
+import jakarta.persistence.Table;
 
 
 
@@ -31,6 +42,7 @@ public class Vehiculo {
 
     @ManyToOne
     @JoinColumn(name = "id_sucursal")
+    @JsonBackReference
     private Sucursal sucursal;
 
     @OneToMany(mappedBy = "vehiculo")
@@ -41,6 +53,16 @@ public class Vehiculo {
 
     @OneToMany(mappedBy = "vehiculo")
     private List<Seguro> seguros;
+    
+    private String imagen;
+
+    // Getters y setters
+    
+    public String getImagen() 
+    { return imagen; }
+    
+    public void setImagen(String imagen) 
+    { this.imagen = imagen; }
 
 	public Integer getIdVehiculo() {
 		return idVehiculo;

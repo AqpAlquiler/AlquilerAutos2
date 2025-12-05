@@ -43,30 +43,9 @@
           <option *ngFor="let a of anios" [value]="a">{{ a }}</option>
         </select>
       </div>
-
-      <!-- Tipo -->
-      <div class="col-md-3">
-        <label class="form-label fw-bold">Tipo</label>
-        <select class="form-select" [(ngModel)]="filtro.tipo" name="tipo">
-          <option value="">Todos</option>
-          <option *ngFor="let t of tipos" [value]="t">{{ t }}</option>
-        </select>
-      </div>
-
-      <!-- Precio -->
-      <div class="col-md-4">
-        <label class="form-label fw-bold">Rango de Precio (S/)</label>
-        <div class="input-group">
-          <input type="number" class="form-control" placeholder="Mínimo"
-                 [(ngModel)]="filtro.precioMin" name="precioMin">
-          <span class="input-group-text">-</span>
-          <input type="number" class="form-control" placeholder="Máximo"
-                 [(ngModel)]="filtro.precioMax" name="precioMax">
-        </div>
-      </div>
-
-    </div>
-
+    </div> 
+    
+    
     <!-- Botones -->
     <div class="text-end mt-3">
       <button type="submit" class="btn btn-primary me-2">Filtrar</button>
@@ -76,7 +55,7 @@
 
   <!-- RESULTADOS -->
   <div class="row g-4">
-    <div class="col-md-4" *ngFor="let vehiculo of vehiculos">
+    <div class="col-md-4" *ngFor="let vehiculo of catalogos">
       <div class="card h-100 shadow-sm">
 
         <img [src]="vehiculo.imagen"
@@ -87,7 +66,7 @@
             {{ vehiculo.marca }} {{ vehiculo.modelo }}
           </h5>
           <p class="card-text">Año: {{ vehiculo.anio }}</p>
-          <p class="card-text">Precio por día: S/ {{ vehiculo.precioDia }}</p>
+          <p class="card-text">Precio por día: S/ {{ vehiculo.precioDiario }}</p>
         </div>
 
         <div class="card-footer text-center bg-white">

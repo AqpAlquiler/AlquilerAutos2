@@ -3,7 +3,6 @@ package com.alquiler.demo.servicesImpl;
 import java.util.List;
 import java.util.Optional;
 
-import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import com.alquiler.demo.entities.Vehiculo;
@@ -13,8 +12,11 @@ import com.alquiler.demo.services.VehiculoService;
 @Service
 public class VehiculoServiceImpl implements VehiculoService {
 
-    @Autowired
-    private VehiculoRepository vehiculoRepository;
+	private final VehiculoRepository vehiculoRepository;
+
+    public VehiculoServiceImpl(VehiculoRepository vehiculoRepository) {
+        this.vehiculoRepository = vehiculoRepository;
+    }
 
     @Override
     public List<Vehiculo> findAll() {
@@ -44,4 +46,16 @@ public class VehiculoServiceImpl implements VehiculoService {
     public void delete(Integer id) {
         vehiculoRepository.deleteById(id);
     }
+
+	@Override
+	public List<Vehiculo> buscarPorMarca(String marca) {
+		// TODO Auto-generated method stub
+		return vehiculoRepository.findByMarcaIgnoreCase(marca);
+	}
+
+	@Override
+	public List<Vehiculo> buscarPorAnio(Integer anio) {
+		// TODO Auto-generated method stub
+		return vehiculoRepository.findByAnio(anio);
+	}
 }

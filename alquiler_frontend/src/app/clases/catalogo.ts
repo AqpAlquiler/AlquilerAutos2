@@ -1,10 +1,20 @@
 export class Catalogo {
 
-    constructor(
-  public marca: string,
-  public modelo: string,
-  public anio: number,
-  public precioDia: number,
-  public imagen: string ){}
-       
-}         
+  constructor(
+    public idVehiculo: number,
+    public placa: string,
+    public marca: string,
+    public modelo: string,
+    public anio: number,
+    public color: string,
+    public estado: string,
+    public asientos: number,
+    public precioDiario: number,
+    public tipoVehiculo: string,
+    public kilometrajeActual: number,
+    public sucursal: any,        
+    public imagen: string        
+  ) {}
+
+}
+      
