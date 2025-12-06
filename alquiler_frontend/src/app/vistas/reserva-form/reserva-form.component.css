@@ -15,3 +15,7 @@
 .btn:hover { 
   transform: scale(1.05);
 }
+
+footer {
+  width: 100%;
+}
