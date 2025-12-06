@@ -7,7 +7,8 @@ import java.util.Optional;
 public interface VehiculoService {
 	
     List<Vehiculo> findAll();
-    Optional<Vehiculo> findById(Integer id);
+    
+    Vehiculo obtenerPorId(Integer id);
 
     List<Vehiculo> buscarPorMarca(String marca);
 

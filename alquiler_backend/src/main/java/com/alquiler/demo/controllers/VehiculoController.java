@@ -50,5 +50,9 @@ public class VehiculoController {
         return vehiculoService.buscarPorTipo(tipoVehiculo);
     }
     
+    @GetMapping("/vehiculo/{id}")
+    public Vehiculo obtenerPorId(@PathVariable Integer id) {
+        return vehiculoService.obtenerPorId(id);
+    }
     
 }

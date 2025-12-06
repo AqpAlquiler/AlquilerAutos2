@@ -23,10 +23,6 @@ public class VehiculoServiceImpl implements VehiculoService {
         return vehiculoRepository.findAll();
     }
 
-    @Override
-    public Optional<Vehiculo> findById(Integer id) {
-        return vehiculoRepository.findById(id);
-    }
 
 	@Override
 	public List<Vehiculo> buscarPorMarca(String marca) {
@@ -45,4 +41,11 @@ public class VehiculoServiceImpl implements VehiculoService {
 
 		return vehiculoRepository.findByTipoVehiculo(tipoVehiculo);
 	}
+
+	 @Override
+	    public Vehiculo obtenerPorId(Integer id) {
+	        return vehiculoRepository.findById(id).orElse(null);
+	    }
+	
+	
 }

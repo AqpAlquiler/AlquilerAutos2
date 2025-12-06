@@ -36,6 +36,6 @@ getVehiculosPorTipo(tipoVehiculo: string): Observable<Catalogo[]> {
   }
 
   getVehiculoPorId(id: string) {
-  return this.http.get<any>(`${this.apiUrl}/vehiculos/${id}`);
+  return this.http.get<any>(`${this.apiUrl}/vehiculo/${id}`);
 }
 }
