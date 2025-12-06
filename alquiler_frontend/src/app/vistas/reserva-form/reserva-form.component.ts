@@ -94,7 +94,7 @@ export class ReservaComponent implements OnInit {
     };
 
     this.reservaService.crearReserva(reserva).subscribe(() => {
-      alert('Reserva creada exitosamente');
+      
     });
   }
 

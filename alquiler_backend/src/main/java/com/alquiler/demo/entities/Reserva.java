@@ -5,6 +5,8 @@ import java.time.LocalDateTime;
 
 import org.hibernate.annotations.CreationTimestamp;
 
+import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
+
 import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
@@ -42,13 +44,21 @@ public class Reserva {
     private Double costoEstimado;
 
     private String estado;
+    
+    @Column(name = "metodo_entrega")
+    private String metodoEntrega;
+
+    @Column(name = "direccion_entrega")
+    private String direccionEntrega;
 
     @ManyToOne
     @JoinColumn(name = "id_cliente")
+    @JsonIgnoreProperties("reservas")
     private Cliente cliente;
 
     @ManyToOne
     @JoinColumn(name = "id_vehiculo")
+    @JsonIgnoreProperties("reservas")
     private Vehiculo vehiculo;
 
     @OneToOne(mappedBy = "reserva")
