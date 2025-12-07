@@ -1,32 +1,15 @@
-<!-- NAVBAR -->
-<nav class="navbar navbar-expand-lg navbar-dark bg-dark">
-  <div class="container">
-    <a class="navbar-brand" routerLink="/">RentDrive</a>
-
-    <button class="navbar-toggler" type="button" data-bs-toggle="collapse" 
-            data-bs-target="#navbarNav">
-      <span class="navbar-toggler-icon"></span>
-    </button>
-
-    <div class="collapse navbar-collapse" id="navbarNav">
-      <ul class="navbar-nav ms-auto">
-        <li class="nav-item"><a class="nav-link" routerLink="/catalogo">Catálogo</a></li>
-        <li class="nav-item"><a class="nav-link" routerLink="/perfil">Mis Reservas</a></li>
-        <li class="nav-item"><a class="nav-link" routerLink="/login">Cerrar Sesión</a></li>
-      </ul>
-    </div>
-  </div>
-</nav>
+<body>
+<app-navbar></app-navbar>
 
 
 
-<div class="container" style="margin-top: 10px; max-width: 700px;">
+<div class="container" style="margin-top: 10px; max-width: 700px; background-color: white; padding: 30px; border-radius: 20px;">
 
   <button class="btn btn-secondary mb-3" routerLink="/catalogo">
     <i class="fa-solid fa-arrow-left"></i> Volver
   </button>
 
-  <h2 class="mb-3">Reserva de Vehículo</h2>
+  <h2 class="mb-3">Reserva de Vehículo</h2> 
   <hr>
 
   <!-- Datos del vehículo -->
@@ -140,6 +123,15 @@
 
 
   <!-- MODAL ÉXITO -->
+
+</div>
+<!-- FOOTER -->
+<footer class="bg-dark text-white text-center py-3 mt-5 w-100">
+  <p class="mb-0">&copy; 2025 RentDrive. Todos los derechos reservados.</p>
+</footer>
+
+</body>
+
 <div class="modal fade" id="successModal" tabindex="-1">
   <div class="modal-dialog modal-dialog-centered">
     <div class="modal-content text-center p-4 shadow-lg border-0">
@@ -157,8 +149,3 @@
     </div>
   </div>
 </div>
-</div>
-<!-- FOOTER -->
-<footer class="bg-dark text-white text-center py-3 mt-5 w-100">
-  <p class="mb-0">&copy; 2025 RentDrive. Todos los derechos reservados.</p>
-</footer>

@@ -59,7 +59,7 @@ public class Reserva {
 
     @ManyToOne
     @JoinColumn(name = "id_vehiculo")
-    @JsonManagedReference("vehiculo-reservas")
+    @JsonBackReference("vehiculo-reservas")
     private Vehiculo vehiculo;
 
     @OneToOne(mappedBy = "reserva")

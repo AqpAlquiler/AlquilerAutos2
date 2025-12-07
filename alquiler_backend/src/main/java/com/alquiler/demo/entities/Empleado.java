@@ -39,17 +39,15 @@ public class Empleado {
     @JsonBackReference(value = "sucursal-empleados")
     private Sucursal sucursal;
 
-    // --- Empleado ⇢ Contratos
+
     @OneToMany(mappedBy = "empleado")
     @JsonManagedReference(value = "empleado-contratos")
     private List<Contrato> contratos;
 
-    // --- Empleado ⇢ Mantenimientos
     @OneToMany(mappedBy = "empleado")
     @JsonManagedReference(value = "empleado-mantenimientos")
     private List<Mantenimiento> mantenimientos;
 
-    // --- Empleado ⇢ Daños
     @OneToMany(mappedBy = "empleado")
     @JsonManagedReference(value = "empleado-danos")
     private List<Danio> danos;

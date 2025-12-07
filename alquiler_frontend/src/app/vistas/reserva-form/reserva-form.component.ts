@@ -4,10 +4,11 @@ import { CommonModule } from '@angular/common';
 import { ActivatedRoute, Router, RouterModule } from '@angular/router';
 import { CatalogoService } from '../../servicios/catalogo.service';
 import { ReservaService } from '../../servicios/reserva.service';
+import { NavbarComponent } from '../../componentes/navbar.component';
 
 declare var bootstrap: any;
 @Component({
-  imports: [CommonModule, FormsModule, RouterModule],
+  imports: [CommonModule, FormsModule, RouterModule, NavbarComponent],
   selector: 'app-reserva',
   standalone: true,
   templateUrl: './reserva-form.component.html',

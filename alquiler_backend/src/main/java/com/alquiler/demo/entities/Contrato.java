@@ -41,8 +41,9 @@ public class Contrato {
 
     @ManyToOne
     @JoinColumn(name = "id_empleado")
+    @JsonBackReference(value = "empleado-contratos")
     private Empleado empleado;
-
+    
     @OneToOne(mappedBy = "contrato")
     @JsonBackReference("contrato-alquiler")
     private Alquiler alquiler;;

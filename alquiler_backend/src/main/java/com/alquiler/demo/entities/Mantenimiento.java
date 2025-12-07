@@ -3,6 +3,7 @@ package com.alquiler.demo.entities;
 import java.math.BigDecimal;
 import java.time.LocalDate;
 
+import com.fasterxml.jackson.annotation.JsonBackReference;
 import com.fasterxml.jackson.annotation.JsonManagedReference;
 
 import jakarta.persistence.Column;
@@ -39,10 +40,11 @@ public class Mantenimiento {
 
     @ManyToOne
     @JoinColumn(name = "id_vehiculo")
-    @JsonManagedReference("vehiculo-mantenimientos")
+    @JsonBackReference("vehiculo-mantenimientos")
     private Vehiculo vehiculo;
 
     @ManyToOne
     @JoinColumn(name = "id_empleado")
+    @JsonBackReference(value = "empleado-mantenimientos")
     private Empleado empleado;
 }

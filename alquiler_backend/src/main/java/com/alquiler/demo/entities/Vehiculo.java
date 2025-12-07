@@ -3,7 +3,7 @@ package com.alquiler.demo.entities;
 import java.util.List;
 
 import com.fasterxml.jackson.annotation.JsonBackReference;
-import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
+import com.fasterxml.jackson.annotation.JsonManagedReference;
 
 import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
@@ -52,15 +52,15 @@ public class Vehiculo {
     private Sucursal sucursal;
 
     @OneToMany(mappedBy = "vehiculo")
-    @JsonBackReference("vehiculo-reservas")
+    @JsonManagedReference("vehiculo-reservas")
     private List<Reserva> reservas;
 
     @OneToMany(mappedBy = "vehiculo")
-    @JsonBackReference("vehiculo-mantenimientos")
+    @JsonManagedReference("vehiculo-mantenimientos")
     private List<Mantenimiento> mantenimientos;
 
     @OneToMany(mappedBy = "vehiculo")
-    @JsonBackReference("vehiculo-seguros")
+    @JsonManagedReference("vehiculo-seguros")
     private List<Seguro> seguros;
     
     private String imagen;
