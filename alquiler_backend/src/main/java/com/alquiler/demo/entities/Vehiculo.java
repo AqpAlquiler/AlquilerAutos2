@@ -48,17 +48,19 @@ public class Vehiculo {
 
     @ManyToOne
     @JoinColumn(name = "id_sucursal")
-    @JsonBackReference
+    @JsonBackReference("sucursal-vehiculos")
     private Sucursal sucursal;
 
     @OneToMany(mappedBy = "vehiculo")
-    @JsonIgnoreProperties("vehiculo")
+    @JsonBackReference("vehiculo-reservas")
     private List<Reserva> reservas;
 
     @OneToMany(mappedBy = "vehiculo")
+    @JsonBackReference("vehiculo-mantenimientos")
     private List<Mantenimiento> mantenimientos;
 
     @OneToMany(mappedBy = "vehiculo")
+    @JsonBackReference("vehiculo-seguros")
     private List<Seguro> seguros;
     
     private String imagen;

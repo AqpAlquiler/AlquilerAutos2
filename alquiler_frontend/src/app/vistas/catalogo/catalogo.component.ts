@@ -4,13 +4,14 @@ import { Catalogo } from '../../clases/catalogo';
 import { CatalogoService } from '../../servicios/catalogo.service';
 import { RouterLink } from '@angular/router';
 import { CommonModule } from '@angular/common';
+import { NavbarComponent } from '../../componentes/navbar.component';
 
 
 
 @Component({
   selector: 'app-catalogo',
   standalone: true,
-  imports: [FormsModule, RouterLink, CommonModule],
+  imports: [FormsModule, RouterLink, CommonModule, NavbarComponent],
   templateUrl: './catalogo.component.html',
   styleUrls: ['./catalogo.component.css']
 })

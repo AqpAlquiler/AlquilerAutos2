@@ -1,27 +1,18 @@
-<!-- NAVBAR -->
-<nav class="navbar navbar-expand-lg navbar-dark bg-dark">
-  <div class="container">
-    <a class="navbar-brand" routerLink="/">RentDrive</a>
+<body>
 
-    <button class="navbar-toggler" type="button" data-bs-toggle="collapse" 
-            data-bs-target="#navbarNav">
-      <span class="navbar-toggler-icon"></span>
-    </button>
-
-    <div class="collapse navbar-collapse" id="navbarNav">
-      <ul class="navbar-nav ms-auto">
-        <li class="nav-item"><a class="nav-link" routerLink="/catalogo">Catálogo</a></li>
-        <li class="nav-item"><a class="nav-link" routerLink="/perfil">Mis Reservas</a></li>
-        <li class="nav-item"><a class="nav-link" routerLink="/login">Cerrar Sesión</a></li>
-      </ul>
-    </div>
-  </div>
-</nav>
+<app-navbar></app-navbar>
 
 <!-- CATÁLOGO -->
-<div class="container my-5">
+<div class="container my-5" 
+     style="min-height: 80vh;
+            padding: 30px;   
+            background: rgb(0, 0, 0); 
+            backdrop-filter: blur(4px); 
+            border-radius: 20px;">
+
   
-  <h2 class="text-center mb-4">Catálogo de Vehículos</h2>
+  <h2 class="catalog-title-underline " style="text-align: center;">Catálogo de Vehículos</h2>
+
 
   <!-- 🔍 FILTROS -->
   <form (ngSubmit)="filtrar()" class="mb-5 p-3 border rounded bg-light shadow-sm">
@@ -100,8 +91,7 @@
           Ver detalles
         </button>
       </div> 
-
-
+      
       </div>
     </div>
   </div>
@@ -111,3 +101,4 @@
 <footer class="bg-dark text-white text-center py-3 mt-5">
   <p class="mb-0">&copy; 2025 RentDrive. Todos los derechos reservados.</p>
 </footer>
+</body>

@@ -14,7 +14,7 @@ import com.alquiler.demo.entities.Reserva;
 import com.alquiler.demo.services.PerfilService;
 
 @RestController
-@RequestMapping("/api/cliente")
+@RequestMapping("/api/perfil")
 @CrossOrigin(origins = "http://localhost:4200") 
 public class PerfilController {
 	

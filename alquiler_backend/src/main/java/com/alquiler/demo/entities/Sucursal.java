@@ -32,7 +32,7 @@ public class Sucursal {
     private List<Empleado> empleados;
 
     @OneToMany(mappedBy = "sucursal")
-    @JsonManagedReference
+    @JsonManagedReference("sucursal-vehiculos")
     private List<Vehiculo> vehiculos;
 
 	public Integer getIdSucursal() {

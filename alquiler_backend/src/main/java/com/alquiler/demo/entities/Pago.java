@@ -3,7 +3,7 @@ package com.alquiler.demo.entities;
 import java.math.BigDecimal;
 import java.time.LocalDate;
 
-import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
+import com.fasterxml.jackson.annotation.JsonBackReference;
 
 import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
@@ -44,11 +44,11 @@ public class Pago {
     
     @ManyToOne
     @JoinColumn(name = "id_cliente")
-    @JsonIgnoreProperties("pago")
+    @JsonBackReference("cliente-pagos")
     private Cliente cliente;
-    
+
     @ManyToOne
     @JoinColumn(name = "id_reserva")
-    @JsonIgnoreProperties("pago")
+    @JsonBackReference("reserva-pagos")
     private Reserva reserva;
 }

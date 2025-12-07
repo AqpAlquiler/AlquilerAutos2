@@ -30,15 +30,8 @@ public class ClienteController {
         return clienteService.obtenerPorId(id);
     }
 
-	@GetMapping("/reservas/{id}")
-    public String mostrarReservasCliente() {
-        return "cliente/mis_reservas";
-    }
+	
 
-    @GetMapping("/pagos/{id}")
-    public String mostrarPagosCliente() {
-        return "cliente/mis_pagos";
-    }
-    
+   
   
 }

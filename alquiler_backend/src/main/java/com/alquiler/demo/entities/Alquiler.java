@@ -4,7 +4,18 @@ import java.math.BigDecimal;
 import java.time.LocalDate;
 import java.util.List;
 
-import jakarta.persistence.*;
+import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
+import com.fasterxml.jackson.annotation.JsonManagedReference;
+
+import jakarta.persistence.Column;
+import jakarta.persistence.Entity;
+import jakarta.persistence.GeneratedValue;
+import jakarta.persistence.GenerationType;
+import jakarta.persistence.Id;
+import jakarta.persistence.JoinColumn;
+import jakarta.persistence.OneToMany;
+import jakarta.persistence.OneToOne;
+import jakarta.persistence.Table;
 import lombok.Getter;
 import lombok.Setter;
 
@@ -36,11 +47,14 @@ public class Alquiler {
 
     @OneToOne
     @JoinColumn(name = "id_contrato")
+    @JsonManagedReference("contrato-alquiler")
     private Contrato contrato;
 
     @OneToMany(mappedBy = "alquiler")
+    @JsonIgnoreProperties("alquiler") // rompe ciclos
     private List<Pago> pagos;
 
     @OneToMany(mappedBy = "alquiler")
+    @JsonIgnoreProperties("alquiler")
     private List<Danio> danos;
 }

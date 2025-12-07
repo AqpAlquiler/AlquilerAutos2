@@ -1,7 +1,19 @@
 package com.alquiler.demo.entities;
 
-import jakarta.persistence.*;
 import java.util.List;
+
+import com.fasterxml.jackson.annotation.JsonBackReference;
+import com.fasterxml.jackson.annotation.JsonManagedReference;
+
+import jakarta.persistence.Column;
+import jakarta.persistence.Entity;
+import jakarta.persistence.GeneratedValue;
+import jakarta.persistence.GenerationType;
+import jakarta.persistence.Id;
+import jakarta.persistence.JoinColumn;
+import jakarta.persistence.ManyToOne;
+import jakarta.persistence.OneToMany;
+import jakarta.persistence.Table;
 import lombok.Getter;
 import lombok.Setter;
 
@@ -24,14 +36,22 @@ public class Empleado {
 
     @ManyToOne
     @JoinColumn(name = "id_sucursal")
+    @JsonBackReference(value = "sucursal-empleados")
     private Sucursal sucursal;
 
+    // --- Empleado ⇢ Contratos
     @OneToMany(mappedBy = "empleado")
+    @JsonManagedReference(value = "empleado-contratos")
     private List<Contrato> contratos;
 
+    // --- Empleado ⇢ Mantenimientos
     @OneToMany(mappedBy = "empleado")
+    @JsonManagedReference(value = "empleado-mantenimientos")
     private List<Mantenimiento> mantenimientos;
 
+    // --- Empleado ⇢ Daños
     @OneToMany(mappedBy = "empleado")
+    @JsonManagedReference(value = "empleado-danos")
     private List<Danio> danos;
+    
 }

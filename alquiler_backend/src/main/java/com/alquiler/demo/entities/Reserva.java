@@ -5,7 +5,8 @@ import java.time.LocalDateTime;
 
 import org.hibernate.annotations.CreationTimestamp;
 
-import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
+import com.fasterxml.jackson.annotation.JsonBackReference;
+import com.fasterxml.jackson.annotation.JsonManagedReference;
 
 import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
@@ -53,14 +54,15 @@ public class Reserva {
 
     @ManyToOne
     @JoinColumn(name = "id_cliente")
-    @JsonIgnoreProperties("reservas")
+    @JsonBackReference("cliente-reservas")
     private Cliente cliente;
 
     @ManyToOne
     @JoinColumn(name = "id_vehiculo")
-    @JsonIgnoreProperties("reservas")
+    @JsonManagedReference("vehiculo-reservas")
     private Vehiculo vehiculo;
 
     @OneToOne(mappedBy = "reserva")
+    @JsonBackReference("reserva-contrato")
     private Contrato contrato;
 }

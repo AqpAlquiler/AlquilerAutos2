@@ -1,8 +1,18 @@
 package com.alquiler.demo.entities;
 
-import jakarta.persistence.*;
 import java.math.BigDecimal;
 import java.time.LocalDate;
+
+import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
+
+import jakarta.persistence.Column;
+import jakarta.persistence.Entity;
+import jakarta.persistence.GeneratedValue;
+import jakarta.persistence.GenerationType;
+import jakarta.persistence.Id;
+import jakarta.persistence.JoinColumn;
+import jakarta.persistence.ManyToOne;
+import jakarta.persistence.Table;
 import lombok.Getter;
 import lombok.Setter;
 
@@ -28,6 +38,7 @@ public class Danio {
 
     @ManyToOne
     @JoinColumn(name = "id_alquiler")
+    @JsonIgnoreProperties("danos")
     private Alquiler alquiler;
 
     @ManyToOne

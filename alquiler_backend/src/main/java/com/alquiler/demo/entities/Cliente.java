@@ -2,7 +2,7 @@ package com.alquiler.demo.entities;
 
 import java.util.List;
 
-import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
+import com.fasterxml.jackson.annotation.JsonManagedReference;
 
 import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
@@ -37,10 +37,10 @@ public class Cliente {
     private String licenciaConducir;
 
     @OneToMany(mappedBy = "cliente")
-    @JsonIgnoreProperties("cliente")
+    @JsonManagedReference("cliente-reservas")
     private List<Reserva> reservas;
-    
+
     @OneToMany(mappedBy = "cliente")
-    @JsonIgnoreProperties("cliente")
+    @JsonManagedReference("cliente-pagos")
     private List<Pago> pagos;
 }
