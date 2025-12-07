@@ -1,6 +1,11 @@
 <!-- NAVBAR -->
 <nav class="navbar navbar-expand-lg navbar-dark bg-dark fixed-top">
-  <a class="navbar-brand" routerLink="/">RentDrive</a>
+  
+  <!-- LOGO + NOMBRE -->
+  <a class="navbar-brand d-flex align-items-center" routerLink="/">
+    <i class="fas fa-car-side me-2"></i>
+    <span class="brand-title">RentDrive</span>
+  </a>
 
   <button class="navbar-toggler" type="button" data-toggle="collapse"
           data-target="#navbarNav" aria-controls="navbarNav"
@@ -9,19 +14,34 @@
   </button>
 
   <div class="collapse navbar-collapse" id="navbarNav">
-    <!-- Menú principal (FullPage anchors) -->
+
     <ul class="navbar-nav me-auto">
-      <li class="nav-item"><a class="nav-link" data-menuanchor="inicio" href="#inicio">Inicio</a></li>
-      <li class="nav-item"><a class="nav-link" data-menuanchor="vehiculos" href="#vehiculos">Destacados</a></li>
-      <li class="nav-item"><a class="nav-link" data-menuanchor="servicios" href="#servicios">Servicios</a></li>
-      <li class="nav-item"><a class="nav-link" data-menuanchor="contacto" href="#contacto">Contacto</a></li>
+      <li class="nav-item">
+        <a class="nav-link separator">|</a>
+      </li>
     </ul>
 
-    <!-- Botones adicionales alineados a la derecha -->
+    <!-- OPCIONES DERECHA -->
     <ul class="navbar-nav ms-auto">
-      <li class="nav-item"><a class="nav-link" routerLink="/catalogo">Catálogo</a></li>
-      <li class="nav-item"><a class="nav-link" routerLink="/login">Iniciar Sesión</a></li>
-      <li class="nav-item"><a class="nav-link" routerLink="/perfil">Perfil</a></li>
+
+      <li class="nav-item">
+        <a class="nav-link d-flex align-items-center" routerLink="/catalogo">
+          <i class="fas fa-th-list me-2"></i> Catálogo
+        </a>
+      </li>
+
+      <li class="nav-item">
+        <a class="nav-link d-flex align-items-center" routerLink="/login">
+          <i class="fas fa-sign-in-alt me-2"></i> Iniciar Sesión
+        </a>
+      </li>
+
+      <li class="nav-item">
+        <a class="nav-link d-flex align-items-center" routerLink="/perfil">
+          <i class="fas fa-user-circle me-2"></i> Perfil
+        </a>
+      </li>
+
     </ul>
   </div>
 </nav>
@@ -32,33 +52,67 @@
 
   <!-- SECCIÓN 1 -->
   <div class="section hero" id="inicio">
-    <div class="hero-content text-center">
-      <h1>Alquila tu vehículo ideal con <span class="text-primary">RentDrive</span></h1>
-      <p>Explora nuestra amplia flota y conduce con seguridad, comodidad y confianza.</p>
+  <div class="hero-content text-center">
 
-      <a routerLink="/auth/registro" class="btn btn-primary btn-lg">Regístrate Ahora</a>
-    </div>
+    <h1 class="hero-title">
+      Alquila tu vehículo ideal con 
+      <span class="text-primary">RentDrive</span>
+    </h1>
+
+    <p class="hero-subtitle">
+      Explora nuestra amplia flota y conduce con seguridad, comodidad y confianza.
+    </p>
+
+    <a routerLink="/auth/registro" class="btn btn-primary btn-hero">
+      <i class="fas fa-user-plus me-2"></i>
+      Regístrate Ahora
+    </a>
+
   </div>
+</div>
 
-  <!-- SECCIÓN 2 -->
+
+  <!-- SECCIÓN VEHÍCULOS -->
 <div class="section" id="vehiculos">
-  <div class="container">
-    <h2 class="section-title" id="titulov" data-aos="fade-up" data-aos-duration="1000">
-      Vehículos Destacados
-    </h2>
+  <div class="vehicles-wrapper">
 
-    <div class="row">
-      <div class="col-md-3 mb-4" *ngFor="let auto of vehiculosDestacados; let i = index"
-           data-aos="fade-up"
-           [attr.data-aos-delay]="i * 150"
-           data-aos-duration="1000">
-        <div class="card vehicle-card h-100">
-          <img [src]="auto.imagen" class="card-img-top">
-          <div class="card-body text-center">
-            <h5 class="card-title">{{ auto.nombre }}</h5>
-            <p class="card-text">Desde {{ auto.precio }} por día</p>
+  <!-- LADO IZQUIERDO: TÍTULO FIJO -->
+    <div class="vehicles-left">
+      <div class="vehicles-left-content">
+
+        <h2>Vehículos Destacados</h2>
+
+        <p class="slogan">
+          Rendimiento, estilo y excelencia en cada camino.
+        </p>
+
+        <div class="vehicles-icons">
+          <div class="icon-box">
+            <i class="fa-solid fa-gauge-high"></i>
+            <span>Rendimiento</span>
+          </div>
+          <div class="icon-box">
+            <i class="fa-solid fa-shield-halved"></i>
+            <span>Seguridad</span>
+          </div>
+          <div class="icon-box">
+            <i class="fa-solid fa-crown"></i>
+            <span>Premium</span>
           </div>
         </div>
+
+      </div>
+    </div>
+  
+
+    <!-- LADO DERECHO: VEHÍCULOS QUE CAMBIAN AL SCROLLEAR -->
+    <div class="vehicles-right">
+      <div class="vehicle-item"
+           *ngFor="let auto of vehiculosDestacados; let i = index"
+           [id]="'vehiculo-' + i">
+        <img [src]="auto.imagen">
+        <h3>{{ auto.nombre }}</h3>
+        
       </div>
     </div>
 
@@ -66,33 +120,37 @@
 </div>
 
 
- <!-- SECCIÓN 3 -->
+
+<!-- SECCIÓN SERVICIOS -->
 <div class="section" id="servicios">
   <div class="container">
-    <h2 class="section-title" id="titulos">Nuestros Servicios</h2>
 
-    <div class="row">
-      <div class="col-md-4 mb-4" *ngFor="let s of servicios">
-        <div class="card text-center p-4">
-
-         <!-- Ícono con imagen -->
-<div class="icon-wrapper mb-3">
-  <img [src]="s.icono" alt="{{ s.titulo }}" class="service-icon">
-</div>
+    <h2 class="section-title text-center my-4">
+  <i class="fa-solid fa-screwdriver-wrench me-2"></i>
+  Nuestros <span class="text-primary">Servicios</span>
+</h2>
 
 
-          <div class="card-body">
-            <h5 class="card-title">{{ s.titulo }}</h5>
-            <p class="card-text">{{ s.descripcion }}</p>
-          </div>
 
+    <div class="services-scroll">
+
+      <div class="service-item" *ngFor="let s of servicios">
+        <div class="icon-wrapper">
+          <i class="fa-solid" [ngClass]="s.icono"></i>
         </div>
+        <h5>{{ s.titulo }}</h5>
+        <p>{{ s.descripcion }}</p>
       </div>
+
     </div>
+
   </div>
 </div>
 
 
+
+
+  <!-- SECCIÓN CONTACTO / FOOTER -->
  <div class="section" id="contacto">
         <div class="footer-full">
 

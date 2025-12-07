@@ -19,17 +19,21 @@ export class InicioComponent implements AfterViewInit, OnDestroy {
   private fpInstance: any;
 
   vehiculosDestacados = [
-    { nombre: 'Auto Compacto', precio: 'S/120', imagen: '/images/ejem1.jpg' },
-    { nombre: 'Sedán Ejecutivo', precio: 'S/180', imagen: '/images/ejem2.jpg' },
-    { nombre: 'SUV Familiar', precio: 'S/220', imagen: '/images/ejem3.jpg' },
-    { nombre: 'Camioneta 4x4', precio: 'S/250', imagen: '/images/ejem4.jpg' }
+    { nombre: 'Gama Alta', imagen: '/images/destacado1.jpg' },
+    { nombre: 'Sedán Ejecutivo', imagen: '/images/ejem2.jpg' },
+    { nombre: 'SUV Familiar', imagen: '/images/ejem3.jpg' },
+    { nombre: 'Camioneta 4x4', imagen: '/images/ejem4.jpg' }
   ];
 
-  servicios = [
-    { titulo: 'Alquiler por Día', descripcion: 'Renta el vehículo...', icono: '/images/day.png' },
-    { titulo: 'Alquiler Mensual', descripcion: 'Ideal para empresas...', icono: '/images/mes.jpg' },
-    { titulo: 'A Domicilio', descripcion: 'Recibe y devuelve...', icono: '/images/house.png' }
-  ];
+servicios = [
+  { icono: 'fa-shield-halved', titulo: 'Seguro Completo', descripcion: 'Protección total durante tu recorrido.' },
+  { icono: 'fa-map-location-dot', titulo: 'GPS Integrado', descripcion: 'Guías precisas para llegar sin problemas.' },
+  { icono: 'fa-gas-pump', titulo: 'Combustible Incluido', descripcion: 'Opciones de tanque lleno.' },
+  { icono: 'fa-headset', titulo: 'Soporte 24/7', descripcion: 'Ayuda inmediata cuando lo necesites.' }
+
+];
+
+
 
   ngAfterViewInit(): void {
     // Inicializa AOS
@@ -59,6 +63,25 @@ export class InicioComponent implements AfterViewInit, OnDestroy {
         // opcional: hacer algo al salir
       }
     });
+
+    const options = {
+    root: null,
+    threshold: 0.6
+  };
+
+  const observer = new IntersectionObserver((entries) => {
+    entries.forEach(entry => {
+      if (entry.isIntersecting) {
+        entry.target.classList.add('active');
+      } else {
+        entry.target.classList.remove('active');
+      }
+    });
+  }, options);
+
+  document.querySelectorAll('.vehicle-item').forEach(item => {
+    observer.observe(item);
+  });
   }
 
   ngOnDestroy(): void {
@@ -72,4 +95,6 @@ export class InicioComponent implements AfterViewInit, OnDestroy {
       console.warn('Error al destruir fullpage instance', e);
     }
   }
+
+ 
 }
