@@ -3,11 +3,12 @@ import { ActivatedRoute, RouterLink } from '@angular/router';
 import { CatalogoService } from '../../servicios/catalogo.service';
 import { FormsModule } from '@angular/forms';
 import { CommonModule } from '@angular/common';
+import { NavbarComponent } from '../../componentes/navbar.component';
 
 @Component({
   selector: 'app-catalogoDetalle',
   standalone: true,
-  imports: [FormsModule, RouterLink, CommonModule],
+  imports: [FormsModule, RouterLink, CommonModule, NavbarComponent],
   templateUrl: './catalogoDetalle.component.html',
   styleUrls: ['./catalogoDetalle.component.css']
 
