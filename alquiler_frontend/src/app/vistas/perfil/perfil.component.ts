@@ -2,62 +2,60 @@ import { Component } from '@angular/core';
 import { FormsModule } from '@angular/forms';
 import { CommonModule } from '@angular/common';
 import { RouterModule } from '@angular/router';
-
-
-interface Reserva {
-  vehiculo: string;
-  fechaInicio: string;
-  fechaFin: string;
-  estado: string;
-}
-
-interface Cliente {
-  nombre: string;
-  apellido: string;
-  correo: string;
-  telefono: string;
-  documento: string;
-}
+import { PerfilService } from '../../servicios/perfil.service';
 
 @Component({
   imports: [CommonModule, FormsModule, RouterModule],
   selector: 'app-perfil',
+  standalone: true,
   templateUrl: './perfil.component.html',
   styleUrls: ['./perfil.component.css']
 })
 export class PerfilComponent {
-  cliente: Cliente = {
-    nombre: 'Juan',
-    apellido: 'Pérez',
-    correo: 'juan@example.com',
-    telefono: '+51 999999999',
-    documento: '12345678'
-  };
+  cliente: any = {};
+  reservas: any[] = [];
+  pagos: any[] = [];
+  clienteId: number = 1;
 
-  reservas: Reserva[] = [
-    {
-      vehiculo: 'Toyota Corolla',
-      fechaInicio: '2025-10-15',
-      fechaFin: '2025-10-18',
-      estado: 'Activa'
-    },
-    {
-      vehiculo: 'Hyundai Tucson',
-      fechaInicio: '2025-09-01',
-      fechaFin: '2025-09-05',
-      estado: 'Finalizada'
-    }
-  ];
+  constructor(private perfilService: PerfilService) {}
 
-  editarPerfil() {
-    console.log('Editar perfil...');
+  ngOnInit(): void {
+    this.cargarPerfil();
+    this.cargarReservas();
+    this.cargarPagos();
   }
 
-  verReserva(reserva: Reserva) {
-    console.log('Ver reserva:', reserva);
+  cargarPerfil(): void {
+    this.perfilService.getClientePorId(this.clienteId)
+      .subscribe({
+        next: data => this.cliente = data,
+        error: err => console.error('Error cargando cliente', err)
+      });
   }
 
-  cancelarReserva(reserva: Reserva) {
+  cargarReservas(): void {
+    this.perfilService.getReservasCliente(this.clienteId)
+      .subscribe({
+        next: data => this.reservas = data,
+        error: err => console.error('Error cargando reservas', err)
+      });
+  }
+
+  cargarPagos(): void {
+    this.perfilService.getPagosCliente(this.clienteId)
+      .subscribe({
+        next: data => this.pagos = data,
+        error: err => console.error('Error cargando pagos', err)
+      });
+  }
+
+  verReserva(reserva: any): void {
+    // Lógica para ver reserva en detalle
+    console.log('Reserva seleccionada:', reserva);
+  }
+
+  cancelarReserva(reserva: any): void {
+    // Lógica para cancelar reserva
     console.log('Cancelar reserva:', reserva);
   }
 }

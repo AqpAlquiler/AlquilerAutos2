@@ -39,4 +39,8 @@ public class Cliente {
     @OneToMany(mappedBy = "cliente")
     @JsonIgnoreProperties("cliente")
     private List<Reserva> reservas;
+    
+    @OneToMany(mappedBy = "cliente")
+    @JsonIgnoreProperties("cliente")
+    private List<Pago> pagos;
 }
