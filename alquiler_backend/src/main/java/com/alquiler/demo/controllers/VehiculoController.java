@@ -1,58 +1,44 @@
 package com.alquiler.demo.controllers;
 
+import com.alquiler.demo.models.Vehiculo;
+import com.alquiler.demo.services.VehiculoService;
+import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
-
-import org.springframework.web.bind.annotation.CrossOrigin;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.PathVariable;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RestController;
-
-import com.alquiler.demo.entities.Vehiculo;
-import com.alquiler.demo.services.VehiculoService;
-
 
 @RestController
 @RequestMapping("/api/vehiculos")
 @CrossOrigin(origins = "http://localhost:4200")
 public class VehiculoController {
-	
-	private final VehiculoService vehiculoService;
-	
-	public VehiculoController(VehiculoService vehiculoService) {
-		this.vehiculoService = vehiculoService;
-	}
 
-	//@PostMapping
-	//public Vehiculo save(@RequestBody Vehiculo vehiculo) {
-		//return vehiculoService.save(vehiculo);
-	//}
-	
-	@GetMapping
-	public List<Vehiculo> findAll(){
-		return vehiculoService.findAll();
-	}
+    private final VehiculoService vehiculoService;
 
-	@GetMapping("/marca/{marca}")
-    public List<Vehiculo> buscarPorMarca(@PathVariable String marca) {
-        return vehiculoService.buscarPorMarca(marca);
+    public VehiculoController(VehiculoService vehiculoService) {
+        this.vehiculoService = vehiculoService;
     }
 
-    // 🔹 Buscar por año
-    @GetMapping("/anio/{anio}")
-    public List<Vehiculo> buscarPorAnio(@PathVariable Integer anio) {
-        return vehiculoService.buscarPorAnio(anio);
+    @GetMapping
+    public List<Vehiculo> listar() {
+        return vehiculoService.listar();
     }
-    
-    @GetMapping("/tipo/{tipoVehiculo}")
-    public List<Vehiculo> buscarPorTipoVehiculo(@PathVariable String tipoVehiculo) {
-        return vehiculoService.buscarPorTipo(tipoVehiculo);
+
+    @GetMapping("/{id}")
+    public Vehiculo obtener(@PathVariable Long id) {
+        return vehiculoService.obtenerPorId(id).orElse(null);
     }
-    
-    @GetMapping("/vehiculo/{id}")
-    public Vehiculo obtenerPorId(@PathVariable Integer id) {
-        return vehiculoService.obtenerPorId(id);
+
+    @PostMapping
+    public Vehiculo crear(@RequestBody Vehiculo vehiculo) {
+        return vehiculoService.guardar(vehiculo);
     }
-    
+
+    @PutMapping("/{id}")
+    public Vehiculo actualizar(@PathVariable Long id, @RequestBody Vehiculo vehiculo) {
+        return vehiculoService.actualizar(id, vehiculo);
+    }
+
+    @DeleteMapping("/{id}")
+    public void eliminar(@PathVariable Long id) {
+        vehiculoService.eliminar(id);
+    }
 }

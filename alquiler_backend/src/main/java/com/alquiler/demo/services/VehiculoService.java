@@ -1,18 +1,39 @@
 package com.alquiler.demo.services;
 
+import com.alquiler.demo.models.Vehiculo;
+import com.alquiler.demo.repositories.VehiculoRepository;
+import org.springframework.stereotype.Service;
+
 import java.util.List;
+import java.util.Optional;
 
-import com.alquiler.demo.entities.Vehiculo;
+@Service
+public class VehiculoService {
 
-public interface VehiculoService {
-	
-    List<Vehiculo> findAll();
-    
-    Vehiculo obtenerPorId(Integer id);
+    private final VehiculoRepository vehiculoRepository;
 
-    List<Vehiculo> buscarPorMarca(String marca);
+    public VehiculoService(VehiculoRepository vehiculoRepository) {
+        this.vehiculoRepository = vehiculoRepository;
+    }
 
-    List<Vehiculo> buscarPorAnio(Integer anio);
-    
-    List<Vehiculo> buscarPorTipo(String tipoVehiculo);
+    public List<Vehiculo> listar() {
+        return vehiculoRepository.findAll();
+    }
+
+    public Optional<Vehiculo> obtenerPorId(Long id) {
+        return vehiculoRepository.findById(id);
+    }
+
+    public Vehiculo guardar(Vehiculo vehiculo) {
+        return vehiculoRepository.save(vehiculo);
+    }
+
+    public Vehiculo actualizar(Long id, Vehiculo vehiculo) {
+        vehiculo.setId(id);
+        return vehiculoRepository.save(vehiculo);
+    }
+
+    public void eliminar(Long id) {
+        vehiculoRepository.deleteById(id);
+    }
 }
