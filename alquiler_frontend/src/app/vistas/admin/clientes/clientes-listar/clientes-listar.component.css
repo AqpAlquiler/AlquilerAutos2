@@ -1,0 +1,97 @@
+/* Contenedor principal */
+.container {
+  max-width: 1000px;
+}
+
+/* Encabezado */
+h2 {
+  font-weight: 700;
+  color: #343a40;
+}
+
+/* Botón "Nuevo Cliente" */
+.btn-success {
+  background-color: #28a745;
+  border: none;
+  border-radius: 6px;
+  font-weight: 600;
+  transition: all 0.3s ease;
+}
+
+.btn-success:hover {
+  background-color: #218838;
+}
+
+/* Tabla */
+.table {
+  border-radius: 12px;
+  overflow: hidden;
+  background-color: #fff;
+}
+
+.table thead.thead-dark {
+  background-color: #343a40;
+  color: #fff;
+}
+
+.table thead th {
+  font-weight: 600;
+  text-align: center;
+}
+
+.table tbody td {
+  vertical-align: middle;
+  text-align: center;
+  padding: 0.75rem;
+  font-size: 0.95rem;
+}
+
+/* Filas */
+.table-striped tbody tr:nth-of-type(odd) {
+  background-color: #f8f9fa;
+}
+
+.table-hover tbody tr:hover {
+  background-color: #e9ecef;
+  transition: background-color 0.3s ease;
+}
+
+/* Botones de acciones */
+.btn-sm {
+  padding: 0.25rem 0.6rem;
+  font-size: 0.85rem;
+  border-radius: 5px;
+  transition: all 0.2s ease;
+}
+
+.btn-primary.btn-sm:hover {
+  background-color: #0069d9;
+}
+
+.btn-danger.btn-sm:hover {
+  background-color: #c82333;
+}
+
+/* Espacio entre botones */
+.ml-1 {
+  margin-left: 0.25rem;
+}
+
+/* Mensaje de lista vacía */
+.text-muted {
+  font-style: italic;
+  color: #6c757d !important;
+}
+
+/* Responsivo */
+@media (max-width: 768px) {
+  .table-responsive {
+    overflow-x: auto;
+  }
+
+  table tbody td,
+  table thead th {
+    font-size: 0.85rem;
+    padding: 0.5rem;
+  }
+}

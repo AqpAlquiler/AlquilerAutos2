@@ -1,0 +1,109 @@
+/* Navbar */
+.navbar {
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+}
+
+.navbar-brand {
+  font-weight: bold;
+  font-size: 1.5rem;
+}
+
+.nav-link {
+  font-size: 1rem;
+  transition: color 0.3s ease;
+}
+
+.nav-link:hover {
+  color: #f8f9fa !important;
+}
+
+.nav-link.active {
+  font-weight: bold;
+  color: #ffc107 !important; /* Resalta la pestaña activa */
+}
+
+/* Contenedor */
+.container {
+  max-width: 900px;
+}
+
+/* Card */
+.card {
+  border-radius: 12px;
+  overflow: hidden;
+}
+
+.card-header {
+  font-size: 1.3rem;
+  letter-spacing: 1px;
+}
+
+.card-body h5 {
+  font-weight: 600;
+  margin-bottom: 0.3rem;
+}
+
+.card-body p {
+  font-size: 1rem;
+  margin-bottom: 0.8rem;
+}
+
+/* List group de alquileres */
+.list-group-item {
+  border-radius: 6px;
+  margin-bottom: 0.5rem;
+  transition: transform 0.2s ease, box-shadow 0.2s ease;
+}
+
+.list-group-item:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.15);
+}
+
+/* Botones */
+.btn {
+  border-radius: 6px;
+  font-weight: 600;
+}
+
+.btn-primary {
+  background-color: #007bff;
+  border: none;
+}
+
+.btn-primary:hover {
+  background-color: #0069d9;
+}
+
+.btn-secondary {
+  background-color: #6c757d;
+  border: none;
+}
+
+.btn-secondary:hover {
+  background-color: #5a6268;
+}
+
+/* Margenes y espaciados */
+.mt-5 {
+  margin-top: 5rem !important;
+}
+
+.pt-5 {
+  padding-top: 3rem !important;
+}
+
+.text-center {
+  text-align: center;
+}
+
+.text-muted {
+  color: #6c757d !important;
+}
+
+/* Responsivo: ajustar columnas */
+@media (max-width: 768px) {
+  .col-md-6 {
+    margin-bottom: 1rem;
+  }
+}
