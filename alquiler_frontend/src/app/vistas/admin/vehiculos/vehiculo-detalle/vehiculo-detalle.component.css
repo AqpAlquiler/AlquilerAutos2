@@ -1,0 +1,90 @@
+/* ==============================
+   Vehículo Detalle Component
+   ============================== */
+
+/* Ajuste general de la tarjeta */
+.card {
+  border-radius: 15px;
+  overflow: hidden;
+}
+
+/* Cabecera de la tarjeta */
+.card-header {
+  font-size: 1.5rem;
+  font-weight: 600;
+  letter-spacing: 1px;
+}
+
+/* Imagen del vehículo */
+img.img-fluid {
+  border-radius: 10px;
+  box-shadow: 0 5px 15px rgba(0, 0, 0, 0.2);
+  transition: transform 0.3s ease;
+}
+
+img.img-fluid:hover {
+  transform: scale(1.05);
+}
+
+/* Detalles del vehículo */
+h5 {
+  font-size: 1rem;
+  color: #343a40;
+}
+
+p {
+  font-size: 0.95rem;
+  color: #495057;
+}
+
+/* Historial de alquileres */
+.list-group-item {
+  border-radius: 8px;
+  margin-bottom: 5px;
+  transition: background-color 0.2s ease;
+}
+
+.list-group-item:hover {
+  background-color: #f8f9fa;
+}
+
+/* Botones */
+.btn {
+  border-radius: 8px;
+  font-weight: 500;
+  transition: all 0.3s ease;
+}
+
+.btn-primary:hover {
+  background-color: #0056b3;
+  border-color: #0056b3;
+}
+
+.btn-secondary:hover {
+  background-color: #6c757d;
+  border-color: #6c757d;
+}
+
+/* Texto de carga */
+.text-center p {
+  font-size: 1.1rem;
+  color: #6c757d;
+  font-style: italic;
+}
+
+/* Responsive */
+@media (max-width: 768px) {
+  .card-body .row {
+    flex-direction: column;
+  }
+
+  .col-md-5,
+  .col-md-7 {
+    max-width: 100%;
+  }
+
+  .btn {
+    width: 100%;
+    margin-bottom: 10px;
+  }
+}

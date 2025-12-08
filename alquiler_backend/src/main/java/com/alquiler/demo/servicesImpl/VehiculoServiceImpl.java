@@ -1,50 +1,39 @@
-package com.alquiler.demo.servicesImpl;
+package com.alquiler.demo.services;
 
-import java.util.List;
-
+import com.alquiler.demo.models.Cliente;
+import com.alquiler.demo.repositories.ClienteRepository;
 import org.springframework.stereotype.Service;
 
-import com.alquiler.demo.entities.Vehiculo;
-import com.alquiler.demo.repositories.VehiculoRepository;
-import com.alquiler.demo.services.VehiculoService;
+import java.util.List;
+import java.util.Optional;
 
 @Service
-public class VehiculoServiceImpl implements VehiculoService {
+public class ClienteService {
 
-	private final VehiculoRepository vehiculoRepository;
+	private final ClienteRepository clienteRepository;
 
-    public VehiculoServiceImpl(VehiculoRepository vehiculoRepository) {
-        this.vehiculoRepository = vehiculoRepository;
-    }
-
-    @Override
-    public List<Vehiculo> findAll() {
-        return vehiculoRepository.findAll();
-    }
-
-
-	@Override
-	public List<Vehiculo> buscarPorMarca(String marca) {
-		
-		return vehiculoRepository.findByMarcaIgnoreCase(marca);
+	public ClienteService(ClienteRepository clienteRepository) {
+		this.clienteRepository = clienteRepository;
 	}
 
-	@Override
-	public List<Vehiculo> buscarPorAnio(Integer anio) {
-		
-		return vehiculoRepository.findByAnio(anio);
+	public List<Cliente> listar() {
+		return clienteRepository.findAll();
 	}
 
-	@Override
-	public List<Vehiculo> buscarPorTipo(String tipoVehiculo) {
-
-		return vehiculoRepository.findByTipoVehiculo(tipoVehiculo);
+	public Optional<Cliente> obtenerPorId(Long id) {
+		return clienteRepository.findById(id);
 	}
 
-	 @Override
-	    public Vehiculo obtenerPorId(Integer id) {
-	        return vehiculoRepository.findById(id).orElse(null);
-	    }
-	
-	
+	public Cliente guardar(Cliente cliente) {
+		return clienteRepository.save(cliente);
+	}
+
+	public Cliente actualizar(Long id, Cliente cliente) {
+		cliente.setId(id);
+		return clienteRepository.save(cliente);
+	}
+
+	public void eliminar(Long id) {
+		clienteRepository.deleteById(id);
+	}
 }
